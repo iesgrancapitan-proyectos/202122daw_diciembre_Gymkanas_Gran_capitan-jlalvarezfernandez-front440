@@ -1,0 +1,21 @@
+<app-home></app-home>
+<!-- <app-single-test [fromTest]="false"></app-single-test> -->
+<div class="container">
+  <div class="row">
+    <div class="col-9 mx-auto my-3" *ngFor="let test of tests; index as i">
+      <mat-card class="card">
+        <img mat-card-img>
+        <mat-card-content>
+          <mat-card-title>
+            <h4>{{test.name}}</h4>
+          </mat-card-title>
+          <p>
+            {{test.description}}
+          </p>
+          <button mat-raised-button [disabled]=" i &gt; answer" 
+          color="primary" (click)="makeTest(test)">Acceder</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<app-home></app-home>
+<mat-card >
+    <mat-card-title>Resultado: </mat-card-title>
+    <mat-card-content>
+        <p>
+            Puntuación: {{score}}
+        </p>
+        <div *ngIf="checkup">
+            <p>Espere a que el organizador verifique algunas pruebas</p>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+<app-home></app-home>
+<form class="form" [formGroup]="inscription">
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Id Gymkana: </mat-label>
+            <input matInput id="id_gymkana" disabled value="{{id}}">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat form-field>
+            <mat-label>Grupo: </mat-label>    
+            <select formControlName="group" id="group">
+                <option *ngFor="let group of groups; index as i" value="{{group[i].id}}">{{group[i].description}}</option>
+            </select>
+        </mat>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Observaciones</mat-label>
+            <textarea id="observations" matInput formControlName="observations"></textarea>
+        </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" type="submit" (click)="signUp()">Inscribirme</button>
+</form>

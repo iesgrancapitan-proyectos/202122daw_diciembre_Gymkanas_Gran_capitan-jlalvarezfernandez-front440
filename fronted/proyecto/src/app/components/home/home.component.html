@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport>
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/gymkanas">Gymkanas</a>
+        <a mat-list-item routerLink="/inscriptions">Inscripciones</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button *ngIf="logued"
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span><a class="title" href="/home">Gymkanas Gran Capitán</a></span>
+        <span class="example-spacer"></span>
+        <span *ngIf="logued">
+          <img mat-card-sm-avatar class="imagen" src="{{profilePhoto}}">
+          <button mat-raised-button color="accent" (click)="authService.logout()">Cerrar Sesion</button>
+        </span>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <mat-card *ngIf="logued">
+    <p>Bienvenid@ Gymkanas Gran Capitán</p>
+  </mat-card>
+  

@@ -1,0 +1,27 @@
+<div *ngIf="fromTest">
+    <app-home></app-home>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+                <div>
+                    <mat-label>
+                        <h4>Título: {{myName}}</h4>
+                    </mat-label>
+                    <!-- <mat-card-img *ngIf="testPhoto" alt="Card image cap" src={{test.image}}></mat-card-img> -->
+                    <p>
+                {{myDescription}}
+                </p>
+                
+            <div [formGroup]="form">
+                <mat-form-field class="example-form-field">
+                    <input matInput type="text" placeholder="Respuesta" 
+                    id="answer" formControlName="response">
+                    <mat-error *ngIf="form.controls.response.invalid">Es requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" (click)="sendAnswer(id)" [disabled]="form.invalid">Enviar</button>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
