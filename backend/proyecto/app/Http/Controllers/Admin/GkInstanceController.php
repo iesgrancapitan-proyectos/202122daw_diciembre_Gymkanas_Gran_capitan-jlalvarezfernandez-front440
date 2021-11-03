@@ -58,9 +58,7 @@ class GkInstanceController extends Controller{
         //$period = Gymkana::all()->where("id", $request->id_gymkana)->get('period');
         $period = Gymkana::all()->where("id", $request->id_gymkana)->first();
         //var_dump($period['period']);
-
         $hours = $period['period'];
-
         //$hours = $period[0];
         $minutes =  str_replace("m", "", substr($period, 2));
         $start_date = new Carbon($request->start_date); 

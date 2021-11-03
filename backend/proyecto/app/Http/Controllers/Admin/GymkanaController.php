@@ -106,7 +106,9 @@ class GymkanaController extends Controller{
      * @param Request $request
      */
     public function startGymkana(Request $request){
-        $period = $request->period;
+        $period = Gymkana::all()->where("id", $request->id_gymkana)->first();
+        $hours = $period['period'];
+        //$period = $request->period;
         $hours = $period[0];
         $minutes =  str_replace("m", "", substr($period, 2));
         $start_date =new Carbon($request->start_date);
@@ -121,6 +123,6 @@ class GymkanaController extends Controller{
             'observations' => $request->observations,
             'description' => $request->description,
         ]);
-        return redirect()->back()->with("status", $period."Instancia Gymkana añadida correctamente");
+        return redirect()->back()->with("status", $period->name." Instancia Gymkana añadida correctamente");
     }
 }

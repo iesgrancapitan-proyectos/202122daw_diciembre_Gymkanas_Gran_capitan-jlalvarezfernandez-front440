@@ -8,7 +8,7 @@
 
         <div class="col-md-6">
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                value="{{ DB::table("users")->where('id', $id)->first()->name }}" required autocomplete="name" autofocus>
+                value="{{ DB::table('users')->where('id', $id)->first()->name }}" required autocomplete="name" autofocus>
 
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -22,7 +22,7 @@
 
         <div class="col-md-6">
             <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname"
-                value="{{ DB::table("users")->where('id', $id)->first()->surname }}" required autocomplete="surname" autofocus>
+                value="{{ DB::table('users')->where('id', $id)->first()->surname }}" required autocomplete="surname" autofocus>
 
             @error('surname')
                 <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
 
         <div class="col-md-6">
             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                name="email" value="{{ DB::table("users")->where("id", $id)->first()->email }}" required autocomplete="email" autofocus>
+                name="email" value="{{ DB::table('users')->where('id', $id)->first()->email }}" required autocomplete="email" autofocus>
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
 
         <div class="col-md-6">
             <input id="perfil" perfil="text" class="form-control @error('perfil') is-invalid @enderror" name="perfil"
-                value="{{ DB::table("users")->where("id", $id)->first()->perfil }}" required autocomplete="perfil" autofocus>
+                value="{{ DB::table('users')->where('id', $id)->first()->perfil }}" required autocomplete="perfil" autofocus>
 
             @error('perfil')
                 <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
 
         <div class="col-md-6">
             <input id="curso" type="text" class="form-control @error('curso') is-invalid @enderror"
-                name="curso" value="{{ DB::table("users")->where("id", $id)->first()->curso }}" required autocomplete="curso" autofocus>
+                name="curso" value="{{ DB::table('users')->where('id', $id)->first()->curso }}" required autocomplete="curso" autofocus>
 
             @error('curso')
                 <span class="invalid-feedback" role="alert">

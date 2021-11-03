@@ -71,9 +71,11 @@ Route::group([
     Route::post('/groups/destroy/{id}', 'GroupController@destroy');
 
     Route::get('/users-groups', 'UserGroupController@all');
+    Route::get('/users-groups/edit-view/{id}', 'UserGroupController@edit');
     Route::get('/add-user-group', 'UserGroupController@add');
     Route::post('/create-user-group', 'UserGroupController@create');
     Route::post('/users-groups/destroy/{id}', 'UserGroupController@destroy');
+    Route::post('/users-groups/update-group/{id}', 'UserGroupController@update');
     
     Route::get('/participants', 'ParticipantController@all');
     Route::get('/add-participant', 'ParticipantController@add');
@@ -83,6 +85,8 @@ Route::group([
     Route::get('/inscriptions', 'InscriptionController@all');
     Route::get('/inscriptions/accept/{id}', 'InscriptionController@accept');
     Route::get('/inscriptions/deny/{id}', 'InscriptionController@deny');
+
+    
 
 });
 

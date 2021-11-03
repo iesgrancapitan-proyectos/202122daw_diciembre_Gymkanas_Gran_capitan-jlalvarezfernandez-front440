@@ -114,7 +114,7 @@ class UserController extends Controller{
      */
     public function deactivate($id){
         $user = User::find($id);
-        $user->estado = 1;
+        $user->estado = 0;
         $user->save();
         return redirect("admin/users")->with("status", "Usuario desactivado correctamente");
     }

@@ -69,9 +69,9 @@ class UserGroupController extends Controller{
      * @param $id
      */
     public function update(Request $request, $id){
-        $group = Groups::find($id);
+        $group = User_groups::find($id);
         $group->description = $request->description;
         $group->save();
-        return redirect("admin/groups")->with("status", "Grupo modificado correctamente");
+        return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
 }
