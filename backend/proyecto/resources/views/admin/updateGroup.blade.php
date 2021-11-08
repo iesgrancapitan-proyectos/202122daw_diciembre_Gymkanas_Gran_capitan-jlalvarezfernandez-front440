@@ -9,10 +9,12 @@
         <div class="col-md-6">
             {{--<input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ DB::table('groups')->where('id', $id)->first()->description }}" required autocomplete="description" autofocus> --}}
 
-            {{-- <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description"
-                    value="{{ DB::table('groups')->where('id', $id)->first()->description }}" required autocomplete="description" autofocus> --}}
+            <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description"
+                    value="{{ DB::table('groups')->where('id', $id)->first()->description }}" required autocomplete="description" autofocus>
+            
+            {{-- $id --}}                    
+            {{-- DB::table('user_groups')->where('id', $id)->first()->description --}}
 
-            {{ DB::table('groups')->where('id', $id)->first()->description }}
             @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

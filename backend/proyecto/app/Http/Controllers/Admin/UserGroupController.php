@@ -59,7 +59,7 @@ class UserGroupController extends Controller{
      */
     public function edit(Request $request){
         $id = $request->id;
-        return view("admin.updateGroup", compact("id"));
+        return view("admin.updateUserGroup", compact("id"));
     }
     
     /**
@@ -70,7 +70,7 @@ class UserGroupController extends Controller{
      */
     public function update(Request $request, $id){
         $group = User_groups::find($id);
-        $group->description = $request->description;
+        $group->id_group = $request->id_group;
         $group->save();
         return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
