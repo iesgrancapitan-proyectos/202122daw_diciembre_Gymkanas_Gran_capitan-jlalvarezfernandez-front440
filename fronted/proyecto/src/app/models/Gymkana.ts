@@ -4,4 +4,5 @@ export class Gymkana{
     description:string;
     start_date:string;
     finish_date:string;
+    id_gymkana:number;
 }

@@ -31,15 +31,24 @@ Route::get('test/{id}', [App\Http\Controllers\Api\V1\TestController::class, 'sho
 Route::post('group_test/', [App\Http\Controllers\Api\V1\Group_testController::class, 'store']);
 
 //Group
-Route::get('getgroup/{id_user}', [App\Http\Controllers\Api\V1\User_groupController::class, 'show']);
 Route::get('getgroupdescription/{id_group}', [App\Http\Controllers\Api\V1\GroupController::class, 'getGroupDescription']);
-Route::get('groups', [App\Http\Controllers\Api\V1\User_groupController::class, 'index']);
+Route::get('getdescriptionbyid/{id}', [App\Http\Controllers\Api\V1\GroupController::class, 'getDescriptionById']);
+
 
 //Participant
 Route::get('getparticipant/{id_group}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'show']);
 Route::get('getparticipantbyid/{id}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'getParticipantById']);
+Route::get('getshowparticipant/{id_gymkana_instance}/{id_group}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'getShowParticipant']);
+//Route::post('createparticipant/{id_gymkana_instance}/{id_participant}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'store']);
+// Route::post('createparticipant', [App\Http\Controllers\Api\V1\ParticipantController::class, 'store']);
 
 //Inscription
 Route::post('inscription', [App\Http\Controllers\Api\V1\InscriptionController::class, 'store']);
 Route::get('getinscription/{id_gymkana_instance}/{id_participant}', [App\Http\Controllers\Api\V1\InscriptionController::class, 'show']);
+
+// User_group
+Route::get('getgroup/{id_user}', [App\Http\Controllers\Api\V1\User_groupController::class, 'getUserGroupById']);
+Route::get('getallusergroup/', [App\Http\Controllers\Api\V1\User_groupController::class, 'getAllUserGroup']);
+Route::get('groups', [App\Http\Controllers\Api\V1\User_groupController::class, 'index']);
+
 

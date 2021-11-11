@@ -55,6 +55,7 @@ class Gk_instanceController extends Controller
      */
     public function show(Gk_instance $gk_instance)
     {
+
         $date = Carbon::now();
         $date = $date->format('d-m-Y-h-i-s');
         // return response()->json(Gk_instanceResource::collection(Gk_instance::all()->where("finish_date", ">",$date) )); //all()->where()

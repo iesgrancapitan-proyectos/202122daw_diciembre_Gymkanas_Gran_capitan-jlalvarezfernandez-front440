@@ -38,6 +38,7 @@ export class DataService {
 
  
   storeAnwser(idGroup:number, id_test:number, id_gymkana:number, answer:string, test:Test){
+    console.log("storeAn");
     let testScore = test.score;
     let testReview = test.review;
     let testAcceptance_criteria = test.acceptance_criteria;
@@ -90,4 +91,43 @@ export class DataService {
     const path = `${this.api}/getresponses/${id_group}/${id_gymkana}`;
     return this.http.get<any>(path);
   }
+  
+  
+  createParticipant( id_gymkana:number , id_group:number){
+    
+    this.http.post<any>('http://127.0.0.1:8000/api/createparticipant/', {
+      'id_gymkana_instance': id_gymkana,
+      'id_group': id_group,
+     
+    }).subscribe(data => {
+      // console.log(data);
+    });
+  }
+
+  getShowParticipant(id_gymkana_instance:number, id_group:number){
+    const path = `${this.api}/getshowparticipant/${id_gymkana_instance}/${id_group}`;
+    return this.http.get<any>(path);
+
+  }
+
+  // LIADO INSCRIPCIONES CON PARTICIPANTES
+
+  showParticipant( id_gymkana_instance:number , id_group:number){
+    
+    this.http.post<any>('http://127.0.0.1:8000/api/getshowparticipant/', {
+      'id_gymkana_instance': id_gymkana_instance,
+      'id_group': id_group,
+     
+    }).subscribe(data => {
+     
+    });
+  }
+  //get Participant
+  //front
+  // DATASERVICE:CREAR METODO QUE DEVUELVA PARTICIPANTE -> ARG(GYMKANA_INSTANCE, ID_GROUP) X
+  // CREAR METODO EN TYPESCRIPT DE SINGLEINSCRIPTION QUE EJECUTE EL MéTODO DE DATA SERVICE
+
+  //back
+  // CREAR RUTA EN LA API (post)
+  // CREAR METODO EN EL CONTROLADOR DE PARTICIPANTES DE LA API  
 }

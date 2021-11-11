@@ -68,4 +68,18 @@ export class UserService {
     const path = `${this.api}/getparticipantbydata/${id_gymkana_instance}/${id_group}`;
     return this.http.get<any>(path);
   }
+
+  // Crear método en user.service * HECHO
+  // Crear método que obtenga los user_groups de la api  * HECHO
+  // Crear ruta en la api * HECHO
+  // Crear método en el controlador de user_group
+  getAllUserGroup(){
+    const path = `${this.api}/getallusergroup/`;
+    return this.http.get<any>(path);
+    
+  }
+  getDescriptionById(id:number){
+    const path = `${this.api}/getdescriptionbyid/${id}`;
+    return this.http.get<any>(path);
+  }
 }

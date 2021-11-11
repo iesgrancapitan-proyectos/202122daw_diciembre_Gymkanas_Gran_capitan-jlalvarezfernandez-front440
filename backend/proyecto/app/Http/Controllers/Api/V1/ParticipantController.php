@@ -31,6 +31,7 @@ class ParticipantController extends Controller
         $participant = Participants::create($request->all());
         return response()->json($participant, 201);
     }
+    
 
     /**
      * Display the specified resource.
@@ -77,4 +78,12 @@ class ParticipantController extends Controller
         $participant->delete();
         return response()->json(null, 204);
     }
+
+    public function getShowParticipant($id_gymkana_instance, $id_group)
+    {
+        return response()->json(ParticipantResource::collection(Participants::all()->where("id_gymkana_instance", $id_gymkana_instance)->where("id_group", $id_group)));
+
+    }
+
+    //una consulta que le pasas: where(id_gymkana_intance)-> y where(id_group)
 }

@@ -13,9 +13,11 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['../home/home.component.html', './single-inscription.component.scss']
 })
 export class SingleInscriptionComponent extends HomeComponent implements OnInit {
-  inscription: FormGroup;
+  formGroupInscription: FormGroup;
   id:number;
+  
   groups:Group[]=[];
+  
   constructor(
     public authService:AuthService,
     public userService:UserService,
@@ -26,12 +28,17 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     super(authService, userService);
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void { // llamada a la api para obtener todos los grupos
     this.showSingleInscription();
-    this.inscription = new FormGroup({
+    this.formGroupInscription = new FormGroup({
+      id_gk_instance: new FormControl(''),
       group: new FormControl(''),
       observations: new FormControl(''),
     });
+    this.createSelect();
+    this.groups.forEach(element => console.log(element));
+    this.createIncription()
+
   }
   showSingleInscription(){
     this.route.params.subscribe(params => {
@@ -46,14 +53,34 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     });
   }
   signUp(){
-    let id_gymkana = parseInt((document.getElementById("id_gymkana") as HTMLInputElement).value);
+    let id_gymkana = parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value);
     let group = parseInt((document.getElementById("group") as HTMLInputElement).value);
-    let observations = (document.getElementById("observations") as HTMLInputElement).value;
-    var id_participant:number;
-    this.userService.getIdParticipant(group).subscribe(res => {
-      id_participant = res[0].id;
-      this.dataService.storeInscription(id_gymkana, id_participant, observations)
+    console.log(document.getElementById("group") as HTMLInputElement);
+    // let observations = (document.getElementById("observations") as HTMLInputElement).value;
+    // var id_participant:number;
+    // console.log(id_gymkana);
+    // console.log(group);
+    // console.log(observations );
+    // this.userService.getIdParticipant(group).subscribe(res => {
+    //   id_participant = res[0].id;
+    //   this.dataService.storeInscription(id_gymkana, id_participant, observations)
+    // });
+    // this.router.navigate(['/inscriptions']);
+  }
+
+  createSelect(){
+    this.userService.getAllUserGroup().subscribe(res =>{
+      res.forEach(element => {
+        this.userService.getDescriptionById(element.id_group).subscribe(groups => {
+          this.groups.push(groups);
+        })
+      });
     });
-    this.router.navigate(['/inscriptions']);
+  }
+
+  // LIADO INSCRIPCIONES CON PARTICIPANTES
+  createIncription() {
+    
+    this.dataService.showParticipant(parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value), parseInt(localStorage.getItem("id")));
   }
 }

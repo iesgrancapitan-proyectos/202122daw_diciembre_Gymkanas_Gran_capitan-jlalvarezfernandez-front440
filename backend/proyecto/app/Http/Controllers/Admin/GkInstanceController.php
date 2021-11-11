@@ -14,6 +14,7 @@ class GkInstanceController extends Controller{
      * 
      */
     public function all(){
+        
         $gk_instance = Gymkana_instance::all();
         return view("admin.gymkanasInstance", compact('gk_instance'));
     }

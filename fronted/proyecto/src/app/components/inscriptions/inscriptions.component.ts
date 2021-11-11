@@ -6,6 +6,7 @@ import { DataService } from 'src/app/services/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Gymkana } from 'src/app/models/Gymkana';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-inscriptions',
   templateUrl: './inscriptions.component.html',
@@ -15,11 +16,14 @@ export class InscriptionsComponent extends HomeComponent implements OnInit {
   gymkanas:Gymkana[]=[];
   dataSource = new MatTableDataSource<Gymkana>([]);
   displayedColumns:string[] = ['observations', 'description', 'start_date', 'finish_date', 'actions'];
+  form: FormGroup;
   constructor(
     public authService:AuthService,
     public userService:UserService,
     public dataService:DataService,
     private router:Router,
+    private formBuilder:FormBuilder,
+    
   ) {
     super(authService, userService);
    }
@@ -37,5 +41,15 @@ export class InscriptionsComponent extends HomeComponent implements OnInit {
 
   signUp(element:Gymkana){
     this.router.navigate([`/single-inscription/${element.id}`]);
+  }
+  createForm(){
+    this.form = this.formBuilder.group({
+      response:['', Validators.required]
+    })
+  }
+
+  createParticipant(){
+    // this.dataService.createParticipant();
+
   }
 }

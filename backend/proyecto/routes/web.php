@@ -77,6 +77,7 @@ Route::group([
     Route::post('/users-groups/destroy/{id}', 'UserGroupController@destroy');
     Route::post('/users-groups/update-group/{id}', 'UserGroupController@update');
     
+    
     Route::get('/participants', 'ParticipantController@all');
     Route::get('/add-participant', 'ParticipantController@add');
     Route::post('/create-participant', 'ParticipantController@create');

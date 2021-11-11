@@ -7,6 +7,7 @@ use App\Http\Resources\V1\GroupCollection;
 use App\Http\Resources\V1\GroupResource;
 use App\Models\Groups;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {
@@ -77,5 +78,13 @@ class GroupController extends Controller
     {
         $Group->delete();
         return response()->json(null, 204);
+    }
+
+    /**
+     * 
+     */
+    public function getDescriptionById($id)
+    {
+        return response()->json(GroupResource::collection(Groups::all()->where("id", $id)));
     }
 }

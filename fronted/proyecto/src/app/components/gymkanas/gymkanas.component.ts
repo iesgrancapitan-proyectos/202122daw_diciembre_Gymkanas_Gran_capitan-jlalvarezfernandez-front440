@@ -13,14 +13,14 @@ import { Gymkana } from 'src/app/models/Gymkana';
   styleUrls: ['../home/home.component.html', './gymkanas.component.scss']
 })
 export class GymkanasComponent extends HomeComponent implements OnInit {
-  gymkanas:Gymkana[]=[];
+  gymkanas: Gymkana[] = [];
   dataSource = new MatTableDataSource<Gymkana>([]);
-  displayedColumns:string[] = ['observations', 'description', 'start_date', 'finish_date', 'actions'];
+  displayedColumns: string[] = ['observations', 'description', 'start_date', 'finish_date', 'actions'];
   constructor(
-    public authService:AuthService,
-    public userService:UserService,
-    public dataService:DataService,
-    private router:Router,
+    public authService: AuthService,
+    public userService: UserService,
+    public dataService: DataService,
+    private router: Router,
   ) {
     super(authService, userService);
   }
@@ -29,7 +29,7 @@ export class GymkanasComponent extends HomeComponent implements OnInit {
     this.createTable();
   }
 
-  createTable(){
+  createTable() {
     // this.dataService.getAllActivesGymkanas().subscribe(res => {
     this.dataService.getAllFutureGymkanas().subscribe(res => {
       this.gymkanas = res;
@@ -37,7 +37,8 @@ export class GymkanasComponent extends HomeComponent implements OnInit {
     });
   }
 
-  startGymkana(element:Gymkana){
-    this.router.navigate([`/tests/${element.id}`]);
+  startGymkana(element: Gymkana) {
+    this.router.navigate([`/tests/${element.id_gymkana}`]);
+  
   }
 }

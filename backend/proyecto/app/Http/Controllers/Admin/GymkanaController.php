@@ -8,12 +8,14 @@ use App\Models\Gymkana;
 use App\Models\Gymkana_instance;
 use Carbon\Carbon;
 
-class GymkanaController extends Controller{
+class GymkanaController extends Controller
+{
     /**
      * Show all gymkanas
      * 
      */
-    public function all(){
+    public function all()
+    {
         $gymkanas = Gymkana::all();
         return view("admin.gymkanas", compact('gymkanas'));
     }
@@ -21,7 +23,8 @@ class GymkanaController extends Controller{
     /**
      * Add a new gymkana to the DB
      */
-    public function add(){
+    public function add()
+    {
         return view("admin.newGymkana");
     }
 
@@ -30,21 +33,22 @@ class GymkanaController extends Controller{
      *
      * @param  Request $request
      */
-    public function create(Request $request){
-        if(isset($request->image)){
+    public function create(Request $request)
+    {
+        if (isset($request->image)) {
             $validExtension = array('jpg', 'png', 'jpeg', 'gif');
-            if(in_array($request->image->extension(), $validExtension)){
+            if (in_array($request->image->extension(), $validExtension)) {
                 $image = $request->file('image');
                 $date = Carbon::now();
                 $date = $date->format('d-m-Y-h-i-s');
                 $extension = $request->image->extension();
-                $imageName = "gk".$request->tipo.$date.".".$extension;
+                $imageName = "gk" . $request->tipo . $date . "." . $extension;
                 $image->move(public_path("images/gymkanas"), $imageName);
             }
-        }else{
+        } else {
             $imageName = '';
         }
-        $period = $request->hours."h".$request->minutes."m";
+        $period = $request->hours . "h" . $request->minutes . "m";
         Gymkana::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -60,29 +64,32 @@ class GymkanaController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         $gymkana = Gymkana::find($id);
         $gymkana->delete();
-        
+
         return redirect("admin/gymkanas")->with("status", "Gymkana eliminada correctamente");
     }
-    
+
     /**
      * Update view for a gymkana
      * 
      * @param Request $request
      */
-    public function edit(Request $request){
+    public function edit(Request $request)
+    {
         $id = $request->id;
         return view("admin.updateGk", compact("id"));
     }
-    
+
     /**
      * Update a gymkana
      * 
      * @param Gymkana $gymkana
      */
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $gymkana = Gymkana::find($id);
         $gymkana->name = $request->name;
         $gymkana->description = $request->description;
@@ -96,7 +103,8 @@ class GymkanaController extends Controller{
      * Start a gymkana with a gymkana instance
      * @param $id
      */
-    public function start($id){
+    public function start($id)
+    {
         $gymkana = Gymkana::find($id);
         return view("admin.startGymkana", compact("gymkana"));
     }
@@ -105,15 +113,16 @@ class GymkanaController extends Controller{
      * Create the gymkana instance related with the gymkana
      * @param Request $request
      */
-    public function startGymkana(Request $request){
+    public function startGymkana(Request $request)
+    {
         $period = Gymkana::all()->where("id", $request->id_gymkana)->first();
         $hours = $period['period'];
         //$period = $request->period;
         $hours = $period[0];
         $minutes =  str_replace("m", "", substr($period, 2));
-        $start_date =new Carbon($request->start_date);
-        $start_date->addHours($hours); 
-        $start_date->addMinutes($minutes); 
+        $start_date = new Carbon($request->start_date);
+        $start_date->addHours($hours);
+        $start_date->addMinutes($minutes);
         $finish_date = $start_date->format('Y-m-d H:i:s');
 
         Gymkana_instance::create([
@@ -123,6 +132,6 @@ class GymkanaController extends Controller{
             'observations' => $request->observations,
             'description' => $request->description,
         ]);
-        return redirect()->back()->with("status", $period->name." Instancia Gymkana añadida correctamente");
+        return redirect()->back()->with("status", $period->name . " Instancia Gymkana añadida correctamente");
     }
 }

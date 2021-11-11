@@ -40,7 +40,7 @@ class User_groupController extends Controller
      */
     public function show($id_user)
     {
-        return response()->json(User_groupResource::collection(User_groups::all()->where('id_user', 19)));
+        return response()->json(User_groupResource::collection(User_groups::all()->where('id_user', $id_user)));
     }
 
     /**
@@ -66,5 +66,23 @@ class User_groupController extends Controller
     {
         $user_group->delete();
         return response()->json(null, 204);
+    }
+      /**
+     * Display the specified resource.
+     *
+     * @param  $id
+     */
+    public function getUserGroupById($id)
+    {
+        return response()->json(User_groupResource::collection(User_groups::all()->where("id_user", $id)));
+    } 
+
+    /**
+     * 
+     */
+    public function getAllUserGroup()
+    {
+        return response()->json(User_groupResource::collection(User_groups::all()));
+        
     }
 }
