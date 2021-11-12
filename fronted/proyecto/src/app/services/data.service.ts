@@ -113,14 +113,13 @@ export class DataService {
   // LIADO INSCRIPCIONES CON PARTICIPANTES
 
   showParticipant( id_gymkana_instance:number , id_group:number){
+    console.log("HOLA");
     
-    this.http.post<any>('http://127.0.0.1:8000/api/getshowparticipant/', {
+    this.http.post<any>('http://127.0.0.1:8000/api/setparticipant/', {
       'id_gymkana_instance': id_gymkana_instance,
       'id_group': id_group,
      
-    }).subscribe(data => {
-     
-    });
+    })
   }
   //get Participant
   //front

@@ -53,9 +53,12 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     });
   }
   signUp(){
+    console.log("HOgfdgdLA");
     let id_gymkana = parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value);
     let group = parseInt((document.getElementById("group") as HTMLInputElement).value);
-    console.log(document.getElementById("group") as HTMLInputElement);
+
+    this.dataService.createParticipant(id_gymkana, group);
+    
     // let observations = (document.getElementById("observations") as HTMLInputElement).value;
     // var id_participant:number;
     // console.log(id_gymkana);
@@ -80,7 +83,6 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
 
   // LIADO INSCRIPCIONES CON PARTICIPANTES
   createIncription() {
-    
     this.dataService.showParticipant(parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value), parseInt(localStorage.getItem("id")));
   }
 }

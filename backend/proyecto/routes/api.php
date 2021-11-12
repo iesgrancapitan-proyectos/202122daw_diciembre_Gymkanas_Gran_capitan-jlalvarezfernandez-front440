@@ -39,7 +39,7 @@ Route::get('getdescriptionbyid/{id}', [App\Http\Controllers\Api\V1\GroupControll
 Route::get('getparticipant/{id_group}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'show']);
 Route::get('getparticipantbyid/{id}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'getParticipantById']);
 Route::get('getshowparticipant/{id_gymkana_instance}/{id_group}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'getShowParticipant']);
-//Route::post('createparticipant/{id_gymkana_instance}/{id_participant}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'store']);
+Route::post('createparticipant/', [App\Http\Controllers\Api\V1\ParticipantController::class, 'store']);
 // Route::post('createparticipant', [App\Http\Controllers\Api\V1\ParticipantController::class, 'store']);
 
 //Inscription
