@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('users', [App\Http\Controllers\Api\V1\UserController::class, 'store']);
 Route::get('get_id_user/{email}', [App\Http\Controllers\Api\V1\UserController::class, 'show']);
 
-//Gymkanas
+// Gymkana
+Route::get('getnamegymkanabyid/{id}', [App\Http\Controllers\Api\V1\GymkanaController::class, 'getNameGymkanaById']);
+
+//Gymkanas instance
 Route::get('gymkanas_instances_active', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'allActive']);
 Route::get('gymkanas_instances_future', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'allFuture']);
 Route::get('gymkanas_instances/{gymkana}', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'show']);
@@ -33,7 +36,6 @@ Route::post('group_test/', [App\Http\Controllers\Api\V1\Group_testController::cl
 //Group
 Route::get('getgroupdescription/{id_group}', [App\Http\Controllers\Api\V1\GroupController::class, 'getGroupDescription']);
 Route::get('getdescriptionbyid/{id}', [App\Http\Controllers\Api\V1\GroupController::class, 'getDescriptionById']);
-
 
 //Participant
 Route::get('getparticipant/{id_group}', [App\Http\Controllers\Api\V1\ParticipantController::class, 'show']);

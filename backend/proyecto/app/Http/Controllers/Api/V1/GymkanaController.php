@@ -67,4 +67,15 @@ class GymkanaController extends Controller
         $gymkana->delete();
         return response()->json(null, 204);
     }
+
+    /**
+     * get the specified name from gymkana.
+     *
+     * @param  \App\Models\Gymkana  $gymkana
+     * @return \Illuminate\Http\Response
+     */
+    public function getNameGymkanaById($id)
+    {
+        return response()->json(GymkanaResource::collection(Gymkana::where("id", $id)->get(['name'])));
+    }
 }

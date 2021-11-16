@@ -8,13 +8,14 @@
     </p>
     <p>
         <mat form-field>
-            <mat-label>Grupo: </mat-label>    
-            <select formControlName="group" id="group">
+            <mat-label>Grupo: </mat-label>
+            <input type="text" id="group" value="{{groupDescription}}" disabled>  
+            <!-- <select formControlName="group" id="group">
                 <option *ngFor="let group of groups; index as i" value="{{group[i].id}}">{{group[i].description}}</option>
-            </select>
+            </select> -->
         </mat>
     </p>
-   <!--  <p>
+    <!-- <p>
         <mat-form-field appearance="fill">
             <mat-label>Observaciones</mat-label>
             <textarea id="observations" matInput formControlName="observations"></textarea>

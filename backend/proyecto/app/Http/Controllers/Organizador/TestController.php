@@ -36,7 +36,7 @@ class TestController extends Controller{
     public function correctAnswer($id){
         // $group_test = Groups_test::all()->where("id_test", $id);
         $group_test = Groups_test::find($id);
-        $score = Test::all()->where("id", $id)->first()->score;
+        $score = Test::all()->where("id", $id)->get('score'); //REVISAR EL SCORE DB::(test)->
         $group_test->score = $score;
         $group_test->checkup = 1;
         $group_test->save();

@@ -73,31 +73,24 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
     });
   }
   sendAnswer(id_gymkana:number){
-    console.log("entrando en single test");
-
     this.loading = true;
     this.answer = (document.getElementById('answer') as HTMLInputElement).value;
-    
     this.userService.getIdGroup(parseInt(localStorage.getItem("id"))).subscribe(data => {
-      console.log(data);
       if(data){
-        
 
-        data.forEach(data => {
-          this.userService.getIdParticipant(data.id_group).subscribe(participant => {
-            console.log(data.id_group);
+        data.forEach(result => {
+          this.userService.getIdParticipant(result.id_group).subscribe(participant => {
+            // console.log("data id group" + result.id_group);
             participant.forEach(part => {
-              console.log(id_gymkana);
-              console.log(part.id);
-              
-              this.userService.getInscription(id_gymkana, part.id).subscribe(inscription => {
-                console.log(inscription);
+              this.userService.getInscription(part.id_gymkana_instance, part.id).subscribe(inscription => { // MIRAR  SUBSCRIBE
                 
+                console.log(inscription);
+                console.log("holaaa");
                 if(inscription.length == 1){
-                  console.log(2);
+                  console.log("dentro if length=1");
                   this.userService.getParticipantById(inscription[0].id_participant).subscribe(res => {
                     if(res){
-                      console.log(3);
+                      console.log("dentro del if res");
                       localStorage.setItem("idGroup", res[0].id_group);
                       this.dataService.storeAnwser(parseInt(localStorage.getItem("idGroup")) , this.idTest, id_gymkana, this.answer, this.test);
                       this.router.navigate([`/tests/${id_gymkana}`]);

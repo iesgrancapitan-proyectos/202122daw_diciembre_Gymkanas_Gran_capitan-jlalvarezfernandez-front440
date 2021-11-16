@@ -51,10 +51,19 @@ export class DataService {
     }else{
       checkup = 1;
     }
-    //Mejorar controlando las fechas de inicio y fin con una con una peticion a la api
     let date = new Date();
     let start_date:any = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
       +" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    console.log("idGroup"+idGroup);
+    console.log("id_test"+id_test);
+    console.log("id_gymkana"+id_gymkana);
+    console.log("answer"+answer);
+    console.log("score"+score);
+    console.log("checkup"+checkup);
+    console.log("start_date"+start_date);
+    console.log("start_date"+start_date);
+    //Mejorar controlando las fechas de inicio y fin con una con una peticion a la api
+
     this.http.post<any>('http://127.0.0.1:8000/api/group_test/', {
       'id_group': idGroup,
       'id_test': id_test,
@@ -91,6 +100,11 @@ export class DataService {
     const path = `${this.api}/getresponses/${id_group}/${id_gymkana}`;
     return this.http.get<any>(path);
   }
+
+  getNameGymkanaById(id:number){
+    const path = `${this.api}/getnamegymkanabyid/${id}`;
+    return this.http.get<any>(path);
+  }
   
   
   createParticipant( id_gymkana:number , id_group:number){
@@ -113,12 +127,9 @@ export class DataService {
   // LIADO INSCRIPCIONES CON PARTICIPANTES
 
   showParticipant( id_gymkana_instance:number , id_group:number){
-    console.log("HOLA");
-    
     this.http.post<any>('http://127.0.0.1:8000/api/setparticipant/', {
       'id_gymkana_instance': id_gymkana_instance,
       'id_group': id_group,
-     
     })
   }
   //get Participant
