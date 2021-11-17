@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Controlador ParticipantController
+ * Este controlador sirve para controlar los participantes de las gymkanas
+ *    - Podemos elegir en que gymkana va a participar y a que grupo pertenece
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -9,10 +16,12 @@ use App\Models\Groups;
 use App\Models\Gymkana_instance;
 
 class ParticipantController extends Controller{
+
     /**
      * Show all participants
      * 
      */
+
     public function all(){
         $participants = Participants::all();
         return view("admin.participants", compact('participants'));
@@ -21,6 +30,7 @@ class ParticipantController extends Controller{
     /**
      * Add a new participant to the DB
      */
+
     public function add(){
         $groups = Groups::all();
         $gkInstance = Gymkana_instance::all();
@@ -32,6 +42,7 @@ class ParticipantController extends Controller{
      *
      * @param  Request $request
      */
+
     public function create(Request $request){
         Participants::create([
             'id_group' => $request->id_group,
@@ -45,6 +56,7 @@ class ParticipantController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
+    
     public function destroy($id){
         $participants = Participants::find($id);
         $participants->delete();

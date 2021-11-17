@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Controlador Group_testController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a las pruebas de las gymkanas
+ * 
+ */
+
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -15,6 +21,7 @@ class Group_testController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return response()->json(Group_testResource::collection(Groups_test::all()), 200);
@@ -26,6 +33,7 @@ class Group_testController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $group_test = Groups_test::create($request->all());
@@ -38,6 +46,7 @@ class Group_testController extends Controller
      * @param  \App\Models\Groups_test  $Group_test
      * @return \Illuminate\Http\Response
      */
+
     public function show(Groups_test $group_test)
     {
         return response()->json(Group_testResource::collection(Groups_test::find($group_test)));
@@ -49,6 +58,7 @@ class Group_testController extends Controller
      * @param  \App\Models\Groups_test  $Group_test
      * @return \Illuminate\Http\Response
      */
+
     public function getResponses($id_group, $id_test)
     {
         return response()->json(Group_testResource::collection(Groups_test::all()->where("id_group", $id_group)->where("id_test", $id_test)));
@@ -61,6 +71,7 @@ class Group_testController extends Controller
      * @param  \App\Models\Groups_test  $group_test
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Groups_test $group_test)
     {
         $group_test->update($request->all());
@@ -73,6 +84,7 @@ class Group_testController extends Controller
      * @param  \App\Models\Group_test  $Group_test
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy(Groups_test $group_test)
     {
         $group_test->delete();

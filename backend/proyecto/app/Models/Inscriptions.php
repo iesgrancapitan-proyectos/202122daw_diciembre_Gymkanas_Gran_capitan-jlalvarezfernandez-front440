@@ -1,4 +1,8 @@
 <?php
+/**
+ * modelo inscriptions
+ * 
+ */
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Controlador UserController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a los usuarios de la app
+ * 
+ */
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -16,6 +20,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return response()->json(UserResource::collection(User::all()), 200);
@@ -26,6 +31,7 @@ class UserController extends Controller
      * 
      * @param $string
      */
+
     public function normalize($string){
         $originales = 'ÁÉÍÓÚáéíóú';
         $modificadas = 'AEIOUaeiou';
@@ -41,6 +47,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         User::create([
@@ -56,11 +63,12 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+
     public function show($email)
     {
         return response()->json(UserResource::collection(User::all()->where('email', $email)));

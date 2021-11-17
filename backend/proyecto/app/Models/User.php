@@ -1,4 +1,8 @@
 <?php
+/**
+ * modelo User
+ * 
+ */
 
 namespace App\Models;
 

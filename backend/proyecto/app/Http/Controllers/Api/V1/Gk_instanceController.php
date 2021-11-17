@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Controlador GkInstanciaController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a las instancias de gymkana
+ * 
+ */
+
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -13,10 +19,11 @@ use Illuminate\Http\Request;
 class Gk_instanceController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Activate all instancia de gymkana.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function allActive()
     {
         $date = Carbon::now();
@@ -25,10 +32,11 @@ class Gk_instanceController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Activate all futures instancia de gymkana.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function allFuture()
     {
         $date = Carbon::now();
@@ -42,6 +50,7 @@ class Gk_instanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $gymkana = Gymkana_instance::create($request->all());
@@ -49,18 +58,18 @@ class Gk_instanceController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * show the specified resource.
      *
      * @param  \App\Models\Gymkana_instance  $gymkana
      * @return \Illuminate\Http\Response
      */
+
     public function show(Gymkana_instance $gk_instance)
     {
 
         $date = Carbon::now();
         $date = $date->format('d-m-Y-h-i-s');
-        // return response()->json(Gk_instanceResource::collection(Gk_instance::all()->where("finish_date", ">",$date) )); //all()->where()
-        return response()->json(Gk_instanceResource::collection(Gymkana_instance::all())); //all()->where()
+        return response()->json(Gk_instanceResource::collection(Gymkana_instance::all()));
     }
     
     /**
@@ -70,6 +79,7 @@ class Gk_instanceController extends Controller
      * @param  \App\Models\Gymkana_instance  $Gk_instance
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Gymkana_instance $gk_instance)
     {
         $gk_instance->update($request->all());
@@ -82,16 +92,20 @@ class Gk_instanceController extends Controller
      * @param  \App\Models\Gymkana  $gymkana
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy(Gymkana_instance $gk_instance)
     {
         $gk_instance->delete();
         return response()->json(null, 204);
     }
 
+    /**
+     * @param  \App\Models\Gymkana  $gymkana
+     * @return \Illuminate\Http\Response
+     */
+
     public function getGymkanaByIdInstancia($id)
     {
-        // return response()->json(GroupResource::collection(Groups::all()->where("id_gymkana", $id_gymkana)));
-
         return response()->json(Gk_instanceResource::collection(Gymkana_instance::all()->where("id", $id)));
     }
 }

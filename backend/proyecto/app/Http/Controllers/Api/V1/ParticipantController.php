@@ -1,4 +1,9 @@
 <?php
+/**
+ * Controlador ParticipantController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a los participantes de las gymkanas
+ * 
+ */
 
 namespace App\Http\Controllers\Api\V1;
 
@@ -15,6 +20,7 @@ class ParticipantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return response()->json(ParticipantResource::collection(Participants::all()), 200);
@@ -26,6 +32,7 @@ class ParticipantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $participant = Participants::create($request->all());
@@ -34,18 +41,19 @@ class ParticipantController extends Controller
     
 
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      *
      * @param  \App\Models\Participants  $participant
      * @return \Illuminate\Http\Response
      */
+
     public function show($id_group)
     {
         return response()->json(ParticipantResource::collection(Participants::all()->where('id_group', $id_group)));
     }
 
     /**
-     * Display the specified resource.
+     * Get participant by id
      *
      * @param  $id
      */
@@ -85,5 +93,4 @@ class ParticipantController extends Controller
 
     }
 
-    //una consulta que le pasas: where(id_gymkana_intance)-> y where(id_group)
 }

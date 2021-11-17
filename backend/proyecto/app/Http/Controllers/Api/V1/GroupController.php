@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Controlador GroupController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a los grupos de las gymkanas
+ * 
+ */
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -16,6 +21,7 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($id)
     {
         return response()->json(GroupResource::collection(Groups::all(), 200));
@@ -27,6 +33,7 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $Group = Groups::create($request->all());
@@ -34,11 +41,12 @@ class GroupController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Description the specified resource.
      *
      * @param  $id
      * @return \Illuminate\Http\Response
      */
+
     public function getGroupDescription($id)
     {
         return response()->json(GroupResource::collection(Groups::all()->where("id", $id)));
@@ -50,6 +58,7 @@ class GroupController extends Controller
      * @param   $id_gymkana
      * @return \Illuminate\Http\Response
      */
+
     public function getGroup($id_gymkana)
     {
         return response()->json(GroupResource::collection(Groups::all()->where("id_gymkana", $id_gymkana)));
@@ -62,6 +71,7 @@ class GroupController extends Controller
      * @param  \App\Models\Group  $Group
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Groups $Group)
     {
         $Group->update($request->all());
@@ -74,6 +84,7 @@ class GroupController extends Controller
      * @param  \App\Models\Group  $Group
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Groups $Group)
     {
         $Group->delete();
@@ -81,8 +92,9 @@ class GroupController extends Controller
     }
 
     /**
-     * 
+     * Description the specific resource
      */
+
     public function getDescriptionById($id)
     {
         return response()->json(GroupResource::collection(Groups::all()->where("id", $id)));

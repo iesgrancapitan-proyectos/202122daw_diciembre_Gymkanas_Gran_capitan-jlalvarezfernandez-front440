@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * modelo Participants
+ */
+
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 

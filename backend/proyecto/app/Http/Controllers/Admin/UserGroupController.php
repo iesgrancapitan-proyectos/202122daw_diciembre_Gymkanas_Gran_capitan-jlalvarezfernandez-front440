@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Controlador UserGroupController
+ * Este controlador sirve para controlar los grupos que van aparticipar en la app
+ *    - podemos editarlos o eliminarlos
+ *     
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -13,6 +21,7 @@ class UserGroupController extends Controller{
      * Show all user-group
      * 
      */
+
     public function all(){
         $users_groups = User_groups::all();
         return view("admin.usersGroups", compact('users_groups'));
@@ -21,6 +30,7 @@ class UserGroupController extends Controller{
     /**
      * Add a new user-group to the DB
      */
+
     public function add(){
         $users = User::all()->where("perfil", "alumno");
         $groups = Groups::all();
@@ -32,6 +42,7 @@ class UserGroupController extends Controller{
      *
      * @param  Request $request
      */
+
     public function create(Request $request){
         User_groups::create([
             'id_user' => $request->id_user,
@@ -45,6 +56,7 @@ class UserGroupController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
+
     public function destroy($id){
         $group =User_groups::find($id);
         $group->delete();
@@ -53,10 +65,11 @@ class UserGroupController extends Controller{
     }
     
     /**
-     * Update view for an user-group
+     * Edit view for an user-group
      * 
      * @param Request $request
      */
+
     public function edit(Request $request){
         $id = $request->id;
         return view("admin.updateUserGroup", compact("id"));
@@ -75,7 +88,4 @@ class UserGroupController extends Controller{
         return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
 
-  
-    
-  
 }

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * modelo Groups_test
+ * 
+ */
+
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 

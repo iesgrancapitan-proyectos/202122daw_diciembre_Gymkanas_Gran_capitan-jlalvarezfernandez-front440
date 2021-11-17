@@ -1,4 +1,10 @@
 <?php
+/**
+ * Controlador AlumnoController
+ * Este controlador sirve para controlar el manejo de los alumnos participantes
+ *   
+ * 
+ */
 
 namespace App\Http\Controllers;
 
@@ -12,6 +18,7 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
         // $gymkanas = Gymkana::where('activo', '>', '1')->get();

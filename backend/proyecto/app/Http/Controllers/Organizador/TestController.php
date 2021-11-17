@@ -1,4 +1,11 @@
 <?php
+/**
+ * Controlador testController
+ * Este controlador sirve para controlar el manejo de las respuestas que tiene que validar el organizador de gymkana.
+ *    
+ *    - Podemos aceptar o rechazar la respuesta y se sumaran los puntos correspondientes
+ * 
+ */
 
 namespace App\Http\Controllers\Organizador;
 
@@ -13,6 +20,7 @@ class TestController extends Controller{
      * Show all tests
      * 
      */
+
     public function all(){
         $tests = Test::all()->where("review", 1);
         return view("organizador.tests", compact('tests'));
@@ -22,6 +30,7 @@ class TestController extends Controller{
      * Show all answer tests
      * 
      */
+
     public function allAnswer($id){
         // $group_test = Groups_test::all()->where("id_test", $id)->where("checkup", 0);
         $group_test = Groups_test::all()->where("id_test", $id);
@@ -33,6 +42,7 @@ class TestController extends Controller{
      * Change the score of the group_test to correct answer
      * 
      */
+
     public function correctAnswer($id){
         // $group_test = Groups_test::all()->where("id_test", $id);
         $group_test = Groups_test::find($id);
@@ -46,6 +56,7 @@ class TestController extends Controller{
      * Change the score of the group_test to incorrect answer
      * 
      */
+    
     public function incorrectAnswer($id){
         // $group_test = Groups_test::all()->where("id_test", $id);
         $group_test = Groups_test::find($id);

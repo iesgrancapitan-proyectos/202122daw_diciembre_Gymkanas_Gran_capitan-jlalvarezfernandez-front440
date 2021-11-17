@@ -1,4 +1,9 @@
 <?php
+/**
+ * Controlador TestController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a los test de las gymkanas
+ * 
+ */
 
 namespace App\Http\Controllers\Api\V1;
 
@@ -15,6 +20,7 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($id)
     {
         return response()->json(TestResource::collection(Test::all()->where("id_gymkana", $id)), 200);
@@ -26,6 +32,7 @@ class TestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $Test = Test::create($request->all());
@@ -38,6 +45,7 @@ class TestController extends Controller
      * @param  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         return response()->json(TestResource::collection(Test::all()->where("id", $id)));
@@ -49,6 +57,7 @@ class TestController extends Controller
      * @param   $id_gymkana
      * @return \Illuminate\Http\Response
      */
+
     public function getTest($id_gymkana)
     {
         return response()->json(TestResource::collection(Test::all()->where("id_gymkana", $id_gymkana)));
@@ -61,6 +70,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $Test
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Test $Test)
     {
         $Test->update($request->all());
@@ -73,6 +83,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $Test
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Test $Test)
     {
         $Test->delete();

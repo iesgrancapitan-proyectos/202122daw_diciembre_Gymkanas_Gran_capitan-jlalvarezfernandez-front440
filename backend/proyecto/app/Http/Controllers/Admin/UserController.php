@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Controlador UserController
+ * Este controlador sirve para controlar los jsuarios que se han registrado en la app
+ *    - hay 3 tipos de usuarios en la app:
+ *      - Administrador: tiene el control de todas las funciones de la app, menos de validar ciertas preguntas (organizador)
+ *      - Organizador: encargado de verificar si ciertas preguntas especiales son correctas o  no
+ *      - Alumnos: particpantes de las gymkanas 
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -12,6 +22,7 @@ class UserController extends Controller{
      * Show all users
      * 
      */
+
     public function all(){
         $users = User::all();
         return view("admin.users", compact('users'));
@@ -20,6 +31,7 @@ class UserController extends Controller{
     /**
      * Add a new user to the DB
      */
+
     public function add(){
         return view("admin.newUser");
     }
@@ -29,6 +41,7 @@ class UserController extends Controller{
      * 
      * @param $string
      */
+
     public function normalize($string){
         $originales = 'ÁÉÍÓÚáéíóú';
         $modificadas = 'AEIOUaeiou';
@@ -43,6 +56,7 @@ class UserController extends Controller{
      *
      * @param  Request $request
      */
+
     public function create(Request $request){
         User::create([
             'name' => $this->normalize($request->name),
@@ -61,6 +75,7 @@ class UserController extends Controller{
      * 
      * @param $id
      */
+
     public function destroy($id){
         $user = User::find($id);
         $user->delete();
@@ -69,10 +84,11 @@ class UserController extends Controller{
     }
     
     /**
-     * Update view for an user
+     * Edit view for an user
      * 
      * @param Request $request
      */
+
     public function edit(Request $request){
         $id = $request->id;
         return view("admin.updateUser", compact("id"));
@@ -84,6 +100,7 @@ class UserController extends Controller{
      * @param Request $request
      * @param $id
      */
+
     public function update(Request $request, $id){
         $user = User::find($id);
         $user->name = $request->name;
@@ -100,6 +117,7 @@ class UserController extends Controller{
      * 
      * @param $id
      */
+
     public function activate($id){
         $user = User::find($id);
         $user->estado = 1;
@@ -112,6 +130,7 @@ class UserController extends Controller{
      * 
      * @param $id
      */
+
     public function deactivate($id){
         $user = User::find($id);
         $user->estado = 0;
@@ -124,6 +143,7 @@ class UserController extends Controller{
      * 
      * @param $id
      */
+    
     public function makeOrganizer($id){
         $user = User::find($id);
         $user->perfil = "organizador";

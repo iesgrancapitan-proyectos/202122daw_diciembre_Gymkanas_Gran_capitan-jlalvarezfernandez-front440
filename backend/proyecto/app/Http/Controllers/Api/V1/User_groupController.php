@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Controlador User_groupController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a las usuarios de grupo de las gymkanas
+ * 
+ */
+
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -15,6 +21,7 @@ class User_groupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return response()->json(User_groupResource::collection(User_groups::all()), 200);
@@ -26,6 +33,7 @@ class User_groupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $user_group = User_groups::create($request->all());
@@ -33,11 +41,12 @@ class User_groupController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      *
      * @param  \App\Models\User_groups  $user_User_group
      * @return \Illuminate\Http\Response
      */
+
     public function show($id_user)
     {
         return response()->json(User_groupResource::collection(User_groups::all()->where('id_user', $id_user)));
@@ -50,6 +59,7 @@ class User_groupController extends Controller
      * @param  \App\Models\User_groups  $user_User_group
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, User_groups $user_group)
     {
         $user_group->update($request->all());
@@ -62,24 +72,27 @@ class User_groupController extends Controller
      * @param  \App\Models\User_groups  $user_User_group
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(User_groups $user_group)
     {
         $user_group->delete();
         return response()->json(null, 204);
     }
       /**
-     * Display the specified resource.
+     * User group by id 
      *
      * @param  $id
      */
+
     public function getUserGroupById($id)
     {
         return response()->json(User_groupResource::collection(User_groups::all()->where("id_user", $id)));
     } 
 
     /**
-     * 
+     * All User of group
      */
+    
     public function getAllUserGroup()
     {
         return response()->json(User_groupResource::collection(User_groups::all()));

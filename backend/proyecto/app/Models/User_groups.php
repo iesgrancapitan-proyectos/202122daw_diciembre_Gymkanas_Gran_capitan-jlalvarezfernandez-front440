@@ -1,4 +1,8 @@
 <?php
+/**
+ * modelo User_groups
+ * 
+ */
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;

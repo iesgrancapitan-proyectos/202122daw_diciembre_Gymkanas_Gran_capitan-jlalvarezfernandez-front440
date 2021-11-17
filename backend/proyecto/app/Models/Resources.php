@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * modelo Resources
+ * 
+ */
+
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 

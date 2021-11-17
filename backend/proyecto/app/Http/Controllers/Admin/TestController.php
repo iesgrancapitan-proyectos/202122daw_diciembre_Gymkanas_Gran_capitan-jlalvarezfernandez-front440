@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Controlador TestController
+ * Este controlador sirve para controlar las pruebas de las que esta formada cada gymkana
+ *    - Podemos crear nuevas pruebas, editarlas (tipo de pregunta, tiempo para responderla, dificultad, cual es la respuesta correcta...) 
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,10 +15,12 @@ use App\Models\Test;
 use App\Models\Gymkana;
 use Carbon\Carbon;
 class TestController extends Controller{
+
     /**
      * Show all tests
      * 
      */
+
     public function all(){
         $test = Test::all();
         $gymkanas = Gymkana::all();
@@ -22,6 +31,7 @@ class TestController extends Controller{
      * Show all the test of one gymkana
      * 
      */
+
     public function testGk($id){
         $tests = Test::all()->where("id_gymkana", $id);
         return view("admin.test", compact('tests'));
@@ -30,6 +40,7 @@ class TestController extends Controller{
     /**
      * Add a new test to the DB
      */
+
     public function add(){
         $gymkanas = Gymkana::all();
         return view("admin.newTest", compact('gymkanas'));
@@ -40,6 +51,7 @@ class TestController extends Controller{
      *
      * @param  Request $request
      */
+
     public function create(Request $request){
         if(isset($request->image)){
             $validExtension = array('jpg', 'png', 'jpeg', 'gif');
@@ -77,6 +89,7 @@ class TestController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
+
     public function destroy($id){
         $test = Test::find($id);
         $test->delete();
@@ -85,10 +98,11 @@ class TestController extends Controller{
     }
     
     /**
-     * Update view for a test
+     * Edit view for a test
      * 
      * @param Request $request
      */
+
     public function edit(Request $request){
         $id = $request->id;
         return view("admin.updateTest", compact("id"));
@@ -100,6 +114,7 @@ class TestController extends Controller{
      * @param Request $request
      * @param $id
      */
+
     public function update(Request $request, $id){
         $test = Test::find($id);
         $test->name = $request->name;
@@ -108,7 +123,6 @@ class TestController extends Controller{
         $test->acceptance_criteria = $request->acceptance_criteria;
         $test->score = $request->score;
         $test->max_period = $request->max_period;
-
         $test->save();
         return redirect("admin/tests")->with("status", "Gymkana modificada correctamente");
     }

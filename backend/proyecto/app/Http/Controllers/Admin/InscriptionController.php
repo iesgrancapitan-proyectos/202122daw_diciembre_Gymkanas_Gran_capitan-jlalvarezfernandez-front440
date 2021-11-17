@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Controlador InscriptionController
+ * Este controlador sirve para controlar las inscripciones de los participantes de las gymkanas
+ *    - Podemos aceptar a participantes o denegarles el acceso
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -11,6 +18,7 @@ class InscriptionController extends Controller{
      * Show all participants
      * 
      */
+
     public function all(){
         $inscriptions = Inscriptions::all();
         return view("admin.inscriptions", compact('inscriptions'));
@@ -22,6 +30,7 @@ class InscriptionController extends Controller{
      * @param  Request $request
      * @param $id
      */
+
     public function accept(Request $request, $id){
        $inscription = Inscriptions::find($id);
        $inscription->checkup = 1;
@@ -34,6 +43,7 @@ class InscriptionController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
+    
     public function deny($id){
         $inscription = Inscriptions::find($id);
         $inscription->delete();

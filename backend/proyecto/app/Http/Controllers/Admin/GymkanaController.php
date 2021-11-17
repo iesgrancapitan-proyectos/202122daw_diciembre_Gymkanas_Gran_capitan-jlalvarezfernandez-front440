@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Controlador GymkanaController
+ * Este controlador sirve para controlar las gymkanas.
+ *    - Podemos crear nuevas gymkanas, empezar a jugarlas(indicando la hora de inicio), modificarlas, eliminarlas
+ *    - Podemos activarla para que se pueda jugar o eliminarla
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -14,6 +22,7 @@ class GymkanaController extends Controller
      * Show all gymkanas
      * 
      */
+
     public function all()
     {
         $gymkanas = Gymkana::all();
@@ -23,6 +32,7 @@ class GymkanaController extends Controller
     /**
      * Add a new gymkana to the DB
      */
+
     public function add()
     {
         return view("admin.newGymkana");
@@ -33,6 +43,7 @@ class GymkanaController extends Controller
      *
      * @param  Request $request
      */
+
     public function create(Request $request)
     {
         if (isset($request->image)) {
@@ -64,6 +75,7 @@ class GymkanaController extends Controller
      * 
      * @param Gymkana $gymkana
      */
+
     public function destroy($id)
     {
         $gymkana = Gymkana::find($id);
@@ -73,10 +85,11 @@ class GymkanaController extends Controller
     }
 
     /**
-     * Update view for a gymkana
+     * Edit view for a gymkana
      * 
      * @param Request $request
      */
+
     public function edit(Request $request)
     {
         $id = $request->id;
@@ -88,6 +101,7 @@ class GymkanaController extends Controller
      * 
      * @param Gymkana $gymkana
      */
+
     public function update(Request $request, $id)
     {
         $gymkana = Gymkana::find($id);
@@ -103,6 +117,7 @@ class GymkanaController extends Controller
      * Start a gymkana with a gymkana instance
      * @param $id
      */
+
     public function start($id)
     {
         $gymkana = Gymkana::find($id);
@@ -113,6 +128,7 @@ class GymkanaController extends Controller
      * Create the gymkana instance related with the gymkana
      * @param Request $request
      */
+    
     public function startGymkana(Request $request)
     {
         $period = Gymkana::all()->where("id", $request->id_gymkana)->first();

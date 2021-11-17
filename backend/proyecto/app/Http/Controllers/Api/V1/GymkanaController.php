@@ -1,4 +1,9 @@
 <?php
+/**
+ * Controlador GymkanaController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a las gymkanas
+ * 
+ */
 
 namespace App\Http\Controllers\Api\V1;
 
@@ -15,6 +20,7 @@ class GymkanaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return response()->json(GymkanaResource::collection(Gymkana::all()), 200);
@@ -26,6 +32,7 @@ class GymkanaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $gymkana = Gymkana::create($request->all());
@@ -33,11 +40,12 @@ class GymkanaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      *
      * @param  \App\Models\Gymkana  $gymkana
      * @return \Illuminate\Http\Response
      */
+
     public function show(Gymkana $gymkana)
     {
         return response()->json(GymkanaResource::collection(Gymkana::find($gymkana))); //all()->where()
@@ -62,6 +70,7 @@ class GymkanaController extends Controller
      * @param  \App\Models\Gymkana  $gymkana
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Gymkana $gymkana)
     {
         $gymkana->delete();
@@ -74,6 +83,7 @@ class GymkanaController extends Controller
      * @param  \App\Models\Gymkana  $gymkana
      * @return \Illuminate\Http\Response
      */
+    
     public function getNameGymkanaById($id)
     {
         return response()->json(GymkanaResource::collection(Gymkana::where("id", $id)->get(['name'])));

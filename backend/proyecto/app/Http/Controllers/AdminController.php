@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Controlador AdminController
+ * Este controlador sirve para controlar el manejo del administrador de la app
+ * 
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,9 +18,7 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        // $gymkanas = Gymkana::where('activo', '>', '1')->get();
-        // $gymkanas = Gymkana::all();
-        // $users = User::all();
+       
         return view("admin.index");
     }
 }

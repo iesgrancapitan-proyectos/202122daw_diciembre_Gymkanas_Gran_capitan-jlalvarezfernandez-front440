@@ -1,4 +1,8 @@
 <?php
+/**
+ * modelo Gymkana-instance
+ * 
+ */
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;

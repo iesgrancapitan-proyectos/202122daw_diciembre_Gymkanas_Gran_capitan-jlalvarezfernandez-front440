@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Controlador GkInstanceController
+ * Este controlador sirve para controlar el manejo de las instancias de gymkana.
+ *    - Una instancia de gymkana sirve para que a una gymkana creada previamente podamos 
+ *      indicarle la fecha de comienzo y de fin.
+ *    - Podemos activarla para que se pueda jugar o eliminarla
+ * 
+ */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -9,6 +18,7 @@ use App\Models\Gymkana;
 use Carbon\Carbon;
 
 class GkInstanceController extends Controller{
+
     /**
      * Show all the gymkana instance
      * 
@@ -31,6 +41,7 @@ class GkInstanceController extends Controller{
      * Check image
      * 
      */
+
     public function checkImage($image){
         $validType = array('jpg', 'png', 'gif', 'jpeg');
         if(isset($image) && $image != ''){
@@ -54,13 +65,11 @@ class GkInstanceController extends Controller{
      *
      * @param  Request $request
      */
+
     public function create(Request $request){
         
-        //$period = Gymkana::all()->where("id", $request->id_gymkana)->get('period');
         $period = Gymkana::all()->where("id", $request->id_gymkana)->first();
-        //var_dump($period['period']);
         $hours = $period['period'];
-        //$hours = $period[0];
         $minutes =  str_replace("m", "", substr($period, 2));
         $start_date = new Carbon($request->start_date); 
         $start_date->addHours($hours); 
@@ -81,10 +90,10 @@ class GkInstanceController extends Controller{
      * 
      * @param $id
      */
+
     public function destroy($id){
         $gk_instance = Gymkana_instance::find($id);
         $gk_instance->delete();
-        
         return redirect("admin/gk-instance")->with("status", "Instancia gymkana eliminada correctamente");
     }
     

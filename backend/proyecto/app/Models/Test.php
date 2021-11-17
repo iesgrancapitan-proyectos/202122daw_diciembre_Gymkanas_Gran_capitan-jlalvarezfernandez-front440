@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * modelo Test
+ * 
+ */
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 

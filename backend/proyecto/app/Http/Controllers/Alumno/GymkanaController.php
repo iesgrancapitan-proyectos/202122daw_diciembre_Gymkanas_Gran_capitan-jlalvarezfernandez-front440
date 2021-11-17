@@ -1,4 +1,11 @@
 <?php
+/**
+ * Controlador GymkanaController
+ * Este controlador sirve para controlar el manejo de la parte de los alumnos participantes en cada gymkana.
+ *    - Podemos inscribirnos en una gymkana.
+ *    - Ver tods las gymkanas existentes.
+ * 
+ */
 
 namespace App\Http\Controllers\Alumno;
 
@@ -9,10 +16,12 @@ use App\Models\Gymkana_instance;
 use Carbon\Carbon;
 
 class GymkanaController extends Controller{
+
     /**
      * Show all gymkanas
      * 
      */
+
     public function all(){
         $date = Carbon::now();
         $gymkanas = Gymkana::all()->where('finis_date','>',$date);
@@ -22,15 +31,17 @@ class GymkanaController extends Controller{
     /**
      * Add a new gymkana to the DB
      */
+
     public function add(){
         return view("admin.newGymkana");
     }
     
     /**
-     * Update view for a gymkana
+     * Edit view for a gymkana
      * 
      * @param Request $request
      */
+
     public function edit(Request $request){
         $id = $request->id;
         return view("admin.updateGk", compact("id"));
@@ -41,6 +52,7 @@ class GymkanaController extends Controller{
      * 
      * @param Gymkana $gymkana
      */
+
     public function update(Request $request, $id){
         $gymkana = Gymkana::find($id);
         $gymkana->name = $request->name;
@@ -55,6 +67,7 @@ class GymkanaController extends Controller{
      * Start a gymkana with a gymkana instance
      * @param $id
      */
+
     public function start($id){
         $gymkana = Gymkana::find($id);
         return view("admin.startGymkana", compact("gymkana"));
@@ -64,6 +77,7 @@ class GymkanaController extends Controller{
      * Create the gymkana instance related with the gymkana
      * @param Request $request
      */
+    
     public function startGymkana(Request $request){
         $period = $request->period;
         $hours = $period[0];

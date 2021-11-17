@@ -1,4 +1,8 @@
 <?php
+/**
+ * modelo Logs
+ * 
+ */
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;

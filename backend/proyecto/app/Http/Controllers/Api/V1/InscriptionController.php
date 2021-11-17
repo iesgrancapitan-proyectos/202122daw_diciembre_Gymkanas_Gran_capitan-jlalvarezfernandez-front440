@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Controlador Group_testController de la Api
+ * Este controlador sirve para hacer las peticiones pertinentes respecto a las inscripciones de las gymkanas
+ * 
+ */
+
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
@@ -15,6 +21,7 @@ class InscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function all()
     {
         return response()->json(InscriptionResource::collection(Inscriptions::all()), 200);
@@ -26,6 +33,7 @@ class InscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $inscription = Inscriptions::create($request->all());
@@ -33,11 +41,12 @@ class InscriptionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      *
      * @param  \App\Models\Inscription  $inscription
      * @return \Illuminate\Http\Response
      */
+
     public function show($id_gymkana_instance, $id_participant)
     {
         return response()->json(InscriptionResource::collection(Inscriptions::all()->where("id_gymkana_instance", $id_gymkana_instance)->where("id_participant", $id_participant)));
@@ -50,7 +59,8 @@ class InscriptionController extends Controller
      * @param  \App\Models\Inscription  $inscription
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inscription $inscription)
+
+    public function update(Request $request, Inscriptions $inscription)
     {
         $inscription->update($request->all());
         return response()->json($inscription, 200);
@@ -62,6 +72,7 @@ class InscriptionController extends Controller
      * @param  \App\Models\Inscription  $inscription
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Inscriptions $inscription)
     {
         $inscription->delete();
