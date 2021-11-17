@@ -19,6 +19,7 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
   group: Group;
   groupDescription : string;
   groupId : number;
+  nameGymkana: string;
 
   constructor(
     public authService: AuthService,
@@ -26,6 +27,7 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     public dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
+    
   ) {
     super(authService, userService);
   }
@@ -47,12 +49,20 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     this.route.params.subscribe(params => {
       this.id = params['id'];  // ORIGINAL
     });
-    console.log(this.id)
+
+    this.dataService.getGymkanaByIdInstancia(this.id).subscribe(gk_instance => {
+      console.log(gk_instance);
+      this.dataService.getNameGymkanaById(gk_instance[0].id_gymkana).subscribe(res => {
+        console.log(res);
+        this.nameGymkana = res[0].name;
+
+      });
+    });
+
      this.userService.getIdGroup(this.id).subscribe(res => {
-       console.log(res)
       res.forEach(element => {
         this.userService.getGroupDescription(element.id_group).subscribe(group => {
-          console.log("grupo" ,group);
+         
           this.group = group[0];
         })
       }); 
@@ -62,12 +72,8 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
   }
   signUp() {
 
-    let id_gymkana = parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value);
-    let group = (document.getElementById("group") as HTMLInputElement).value;
 
-    console.log(id_gymkana);
-    console.log(this.groupId);
-    this.dataService.createParticipant(id_gymkana, this.groupId);
+    this.dataService.createParticipant(this.id, this.groupId);
     this.router.navigate(['/gymkanas']); 
 
     // let observations = (document.getElementById("observations") as HTMLInputElement).value;
@@ -84,12 +90,9 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
 
   createSelect() {
     this.userService.getAllUserGroup().subscribe(res => {
-      console.log("RES", res);
       res.forEach(element => {
         if(element.id_user == localStorage.getItem("id")){
-          console.log(element.id_group);
           this.userService.getDescriptionById(element.id_group).subscribe(groups => { //recibe el id del grupo y devuelve el grupo entero
-            console.log(groups);
             this.groupDescription = groups[0].description;
             this.groupId = groups[0].id;
           })

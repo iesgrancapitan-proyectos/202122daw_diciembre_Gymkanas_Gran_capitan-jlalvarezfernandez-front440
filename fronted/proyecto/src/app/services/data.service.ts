@@ -106,6 +106,10 @@ export class DataService {
     return this.http.get<any>(path);
   }
   
+  getGymkanaByIdInstancia(id:number){
+    const path = `${this.api}/getgymkanabyidinstancia/${id}`;
+    return this.http.get<any>(path);
+  }
   
   createParticipant( id_gymkana:number , id_group:number){
     

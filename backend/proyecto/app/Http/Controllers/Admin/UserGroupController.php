@@ -75,11 +75,7 @@ class UserGroupController extends Controller{
         return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
 
-   /*  public function getAllUserGroup(Request $request)
-    {
-        $userGroup = User_Groups::all();
-
-    } */
+  
     
   
 }

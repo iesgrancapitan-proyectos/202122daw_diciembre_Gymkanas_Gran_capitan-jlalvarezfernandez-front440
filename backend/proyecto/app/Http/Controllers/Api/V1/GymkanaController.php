@@ -78,4 +78,6 @@ class GymkanaController extends Controller
     {
         return response()->json(GymkanaResource::collection(Gymkana::where("id", $id)->get(['name'])));
     }
+
+   
 }

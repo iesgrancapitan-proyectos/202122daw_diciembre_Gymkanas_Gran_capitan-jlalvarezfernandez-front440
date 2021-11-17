@@ -7,7 +7,7 @@
         <tr>
             <th>Email</th>
             <th>Grupo</th>
-           <!--  <th>Editar</th> -->
+            <th>Editar</th>
             <th>Eliminar</th>
         </tr>
     </thead>
@@ -16,8 +16,8 @@
         <tr>
             <td>{{ DB::table('users')->where('id', $group->id_user)->first()->email }}</td>
             <td>{{ DB::table('groups')->where('id', $group->id_group)->first()->description }}</td>
-<!--             <td><button class="btn btn-warning btn-sm"><a href="/admin/users-groups/edit-view/{{$group->id}}">Editar</a></button></td>
- -->            <td>
+             <td><button class="btn btn-warning btn-sm"><a href="/admin/users-groups/edit-view/{{$group->id}}">Editar</a></button></td>
+             <td>
                 <form action="/admin/users-groups/destroy/{{$group->id}}" method="POST">
                     @method('POST')
                     @csrf

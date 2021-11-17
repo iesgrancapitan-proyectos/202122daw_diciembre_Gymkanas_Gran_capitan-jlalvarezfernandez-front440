@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Gk_instanceCollection;
 use App\Http\Resources\V1\Gk_instanceResource;
+use App\Http\Resources\V1\GymkanaResource;
 use App\Models\Gymkana_instance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class Gk_instanceController extends Controller
      * @param  \App\Models\Gymkana_instance  $gymkana
      * @return \Illuminate\Http\Response
      */
-    public function show(Gk_instance $gk_instance)
+    public function show(Gymkana_instance $gk_instance)
     {
 
         $date = Carbon::now();
@@ -69,7 +70,7 @@ class Gk_instanceController extends Controller
      * @param  \App\Models\Gymkana_instance  $Gk_instance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gk_instance $gk_instance)
+    public function update(Request $request, Gymkana_instance $gk_instance)
     {
         $gk_instance->update($request->all());
         return response()->json($gk_instance, 200);
@@ -81,9 +82,16 @@ class Gk_instanceController extends Controller
      * @param  \App\Models\Gymkana  $gymkana
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gk_instance $gk_instance)
+    public function destroy(Gymkana_instance $gk_instance)
     {
         $gk_instance->delete();
         return response()->json(null, 204);
+    }
+
+    public function getGymkanaByIdInstancia($id)
+    {
+        // return response()->json(GroupResource::collection(Groups::all()->where("id_gymkana", $id_gymkana)));
+
+        return response()->json(Gk_instanceResource::collection(Gymkana_instance::all()->where("id", $id)));
     }
 }

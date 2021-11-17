@@ -24,6 +24,7 @@ Route::get('getnamegymkanabyid/{id}', [App\Http\Controllers\Api\V1\GymkanaContro
 Route::get('gymkanas_instances_active', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'allActive']);
 Route::get('gymkanas_instances_future', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'allFuture']);
 Route::get('gymkanas_instances/{gymkana}', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'show']);
+Route::get('/getgymkanabyidinstancia/{id}', [App\Http\Controllers\Api\V1\Gk_instanceController::class, 'getGymkanaByIdInstancia']);
 
 //Test
 Route::get('tests/{id}', [App\Http\Controllers\Api\V1\TestController::class, 'index']);
