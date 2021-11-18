@@ -97,6 +97,7 @@ Route::group([
     'namespace' => 'Alumno'
 ], function(){
     Route::get('/gymkanas', 'GymkanaController@all');
+    
 });
 
 Route::group([
@@ -109,3 +110,5 @@ Route::group([
     Route::get('/tests/correct/{id}', 'TestController@correctAnswer');
     Route::get('/tests/incorrect/{id}', 'TestController@incorrectAnswer');
 });
+
+//routes alumno

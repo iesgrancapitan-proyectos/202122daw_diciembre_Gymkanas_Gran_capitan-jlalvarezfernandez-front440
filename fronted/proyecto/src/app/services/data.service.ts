@@ -54,14 +54,7 @@ export class DataService {
     let date = new Date();
     let start_date:any = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
       +" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-    console.log("idGroup"+idGroup);
-    console.log("id_test"+id_test);
-    console.log("id_gymkana"+id_gymkana);
-    console.log("answer"+answer);
-    console.log("score"+score);
-    console.log("checkup"+checkup);
-    console.log("start_date"+start_date);
-    console.log("start_date"+start_date);
+
     //Mejorar controlando las fechas de inicio y fin con una con una peticion a la api
 
     this.http.post<any>('http://127.0.0.1:8000/api/group_test/', {

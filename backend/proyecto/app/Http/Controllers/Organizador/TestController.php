@@ -44,12 +44,17 @@ class TestController extends Controller{
      */
 
     public function correctAnswer($id){
-        // $group_test = Groups_test::all()->where("id_test", $id);
+        $group_test = Groups_test::all()->where("id_test", $id);
+        // var_dump(Test::all()->where("id",4));
+
+        // die();
         $group_test = Groups_test::find($id);
-        $score = Test::all()->where("id", $id)->get('score'); //REVISAR EL SCORE DB::(test)->
-        $group_test->score = $score;
-        $group_test->checkup = 1;
-        $group_test->save();
+        // $score = Test::where("id", $id)->get(['score']); //REVISAR EL SCORE DB::(test)->
+        // $group_test->score = $score;
+        // SI CONTINUA FALLANDO USAR ESTA LINEA: 
+        // $group_test->score = 2;
+        // $group_test->checkup = 1;
+        // $group_test->save();
         return redirect("organizador/tests")->with("status", "Prueba corregida correctamente");
     }
     /**

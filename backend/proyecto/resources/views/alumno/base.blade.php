@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-1">
             <p><a href="/alumno/gymkanas">Gymkanas</a></p>
-            <p><a href="/alumno/inscripciones">Inscripciones</a></p>
+         <!--    <p><a href="/alumno/inscripciones">Inscripciones</a></p> -->
         </div>
         <div class="col-md-10">
             <div class="card">

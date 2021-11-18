@@ -61,7 +61,6 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
           this.myDescription = this.test.description;
           this.idTest = this.test.id;
           this.id = this.test.id_gymkana;
-          console.log(this.id);
           
           if(this.test.photo !== ''){
             this.photo = true;
@@ -73,27 +72,29 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
     });
   }
   sendAnswer(id_gymkana:number){
+    console.log("entrando send answer");
     this.loading = true;
     this.answer = (document.getElementById('answer') as HTMLInputElement).value;
     this.userService.getIdGroup(parseInt(localStorage.getItem("id"))).subscribe(data => {
+      console.log("data", data);
       if(data){
 
         data.forEach(result => {
           this.userService.getIdParticipant(result.id_group).subscribe(participant => {
+            console.log("participant", participant);
             // console.log("data id group" + result.id_group);
             participant.forEach(part => {
               this.userService.getInscription(part.id_gymkana_instance, part.id).subscribe(inscription => { // MIRAR  SUBSCRIBE
-                
-                console.log(inscription);
-                console.log("holaaa");
+                console.log("inscription ",inscription)
                 if(inscription.length == 1){
-                  console.log("dentro if length=1");
                   this.userService.getParticipantById(inscription[0].id_participant).subscribe(res => {
+                    console.log("get participant",res);
                     if(res){
-                      console.log("dentro del if res");
+                      console.log("llama a la api");
+                      
                       localStorage.setItem("idGroup", res[0].id_group);
                       this.dataService.storeAnwser(parseInt(localStorage.getItem("idGroup")) , this.idTest, id_gymkana, this.answer, this.test);
-                      this.router.navigate([`/tests/${id_gymkana}`]);
+                      // this.router.navigate([`/tests/${id_gymkana}`]);
                       this.addNumTest();
                     }
                   }, err => {

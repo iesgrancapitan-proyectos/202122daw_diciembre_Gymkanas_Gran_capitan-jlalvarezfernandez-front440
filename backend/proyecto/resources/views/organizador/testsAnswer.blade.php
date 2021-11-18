@@ -23,8 +23,8 @@
             <td>{{ DB::table('tests')->where('id', $g_test->id_test)->first()->acceptance_criteria }}</td>
             <td>{{ $g_test->answer }}</td>
             <td>{{ DB::table('tests')->where('id', $g_test->id_test)->first()->score }}</td>
-            <td><button class="btn btn-success btn-sm"><a href="/organizador/tests/correct/{{$g_test->id}}">Correcta</a></button></td>
-            <td><button class="btn btn-danger btn-sm"><a href="/organizador/tests/incorrect/{{$g_test->id}}">InCorrecta</a></button></td>
+            <td><button class="btn btn-success btn-sm"><a href="/organizador/tests/correct/{{$g_test->id_test}}">Correcta</a></button></td>
+            <td><button class="btn btn-danger btn-sm"><a href="/organizador/tests/incorrect/{{$g_test->id_test}}">InCorrecta</a></button></td>
            
         </tr>
         @endforeach

@@ -24,7 +24,7 @@ class GymkanaController extends Controller{
 
     public function all(){
         $date = Carbon::now();
-        $gymkanas = Gymkana::all()->where('finis_date','>',$date);
+        $gymkanas = Gymkana::all();
         return view("alumno.gymkanas", compact('gymkanas'));
     }
 
