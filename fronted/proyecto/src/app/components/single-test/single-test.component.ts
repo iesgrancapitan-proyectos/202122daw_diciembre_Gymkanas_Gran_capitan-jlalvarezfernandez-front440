@@ -48,7 +48,8 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
 
   createForm(){
     this.form = this.formBuilder.group({
-      response:['', Validators.required]
+      // response:['', Validators.required]  // ORIGINAL
+      response:['']
     })
   }
 
@@ -94,7 +95,7 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
                       
                       localStorage.setItem("idGroup", res[0].id_group);
                       this.dataService.storeAnwser(parseInt(localStorage.getItem("idGroup")) , this.idTest, id_gymkana, this.answer, this.test);
-                      // this.router.navigate([`/tests/${id_gymkana}`]);
+                       this.router.navigate([`/tests/${id_gymkana}`]);
                       this.addNumTest();
                     }
                   }, err => {
@@ -109,4 +110,8 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
       }
     });
   }
+  goBack(id_gymkana:number) {
+    this.router.navigate([`/tests/${id_gymkana}`]);
+   
+    }
 }

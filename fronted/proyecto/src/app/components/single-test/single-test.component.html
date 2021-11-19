@@ -9,19 +9,23 @@
                     </mat-label>
                     <!-- <mat-card-img *ngIf="testPhoto" alt="Card image cap" src={{test.image}}></mat-card-img> -->
                     <p>
-                {{myDescription}}
-                </p>
-                
-            <div [formGroup]="form">
-                <mat-form-field class="example-form-field">
-                    <input matInput type="text" placeholder="Respuesta" 
-                    id="answer" formControlName="response">
-                    <mat-error *ngIf="form.controls.response.invalid">Es requerido</mat-error>
-                </mat-form-field>
+                        {{myDescription}}
+                    </p>
+
+                    <div [formGroup]="form">
+                        <mat-form-field class="example-form-field">
+                            <input matInput type="text" placeholder="Respuesta" id="answer" formControlName="response">
+                            <!-- <mat-error *ngIf="form.controls.response.invalid">Es requerido</mat-error> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="botones">
+                        <button mat-raised-button color="primary" (click)="sendAnswer(id)"
+                            [disabled]="form.invalid">Enviar</button>
+                        
+                        <button mat-raised-button color="primary" (click)="goBack(id)">Volver</button>
+                    </div>
+                </div>
             </div>
-            <button mat-raised-button color="primary" (click)="sendAnswer(id)" [disabled]="form.invalid">Enviar</button>
         </div>
-    </div>
-</div>
     </div>
 </div>
