@@ -8,9 +8,11 @@
         <mat-card-content>
           <mat-card-title>
             <h4>{{test.name}}</h4>
+            
           </mat-card-title>
-          <p>
+          <p class="preguntas">
             {{test.description}}
+            <img [src]="'assets/img/check.png'"  title="Pregunta Respondida" width="45px" height="35px">
           </p>
           <button mat-raised-button [disabled]=" i &gt; answer" 
           color="primary" (click)="makeTest(test)">Acceder</button>

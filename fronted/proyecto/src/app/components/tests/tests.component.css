@@ -1,0 +1,10 @@
+.card {
+  width: 100%;
+  padding: 10px;
+  justify-content: inherit;
+}
+
+.preguntas {
+  display: flex;
+  justify-content: space-between;
+}
