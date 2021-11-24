@@ -21,11 +21,11 @@ export class InscriptionsComponent extends HomeComponent implements OnInit {
     public authService:AuthService,
     public userService:UserService,
     public dataService:DataService,
-    private router:Router,
+    public router:Router,
     private formBuilder:FormBuilder,
     
   ) {
-    super(authService, userService);
+    super(authService, userService, router);
    }
 
   ngOnInit(): void {

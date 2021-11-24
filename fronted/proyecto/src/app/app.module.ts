@@ -22,6 +22,7 @@ import { InscriptionsComponent } from './components/inscriptions/inscriptions.co
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SingleInscriptionComponent } from './components/single-inscription/single-inscription.component';
 import { ResultComponent } from './components/result/result.component';
+import { PortadaComponent } from './portada/portada.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ResultComponent } from './components/result/result.component';
     InscriptionsComponent,
     SingleInscriptionComponent,
     ResultComponent,
+    PortadaComponent,
     
   ],
   imports: [

@@ -20,9 +20,9 @@ export class GymkanasComponent extends HomeComponent implements OnInit {
     public authService: AuthService,
     public userService: UserService,
     public dataService: DataService,
-    private router: Router,
+    public router: Router,
   ) {
-    super(authService, userService);
+    super(authService, userService, router);
   }
 
   ngOnInit(): void {

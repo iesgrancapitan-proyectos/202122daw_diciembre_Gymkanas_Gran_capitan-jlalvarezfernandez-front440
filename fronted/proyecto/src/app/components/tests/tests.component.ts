@@ -16,14 +16,15 @@ export class TestsComponent extends HomeComponent implements OnInit {
   answer:number = 0;
   checkup:boolean = false;
   score:number = 0;
+ 
   constructor(
     public authService:AuthService,
     public userService:UserService,
     public dataService:DataService,
-    private router:Router,
+    public router:Router,
     private route:ActivatedRoute,
     ) {
-      super(authService, userService);
+      super(authService, userService, router);
     }
     
   ngOnInit(): void {

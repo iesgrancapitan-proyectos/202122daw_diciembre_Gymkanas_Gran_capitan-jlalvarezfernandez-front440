@@ -45,12 +45,21 @@ class TestController extends Controller{
 
     public function correctAnswer($id){
         $group_test = Groups_test::all()->where("id_test", $id);
-        // var_dump(Test::all()->where("id",4));
+        $score = Test::all()->where("id",4);
+        $score = Test::get("score")->where("id", $id);
 
-        // die();
+
+        // $score =Test::all("")->where("id",4);
+        // $score = Test::where("id", $id)->select("score");
+        var_dump($score);
+
+        die();
         $group_test = Groups_test::find($id);
         // $score = Test::where("id", $id)->get(['score']); //REVISAR EL SCORE DB::(test)->
         // $group_test->score = $score;
+
+        // $score = Test::where("id", $id)->select("score"); 
+
         // SI CONTINUA FALLANDO USAR ESTA LINEA: 
         // $group_test->score = 2;
         // $group_test->checkup = 1;

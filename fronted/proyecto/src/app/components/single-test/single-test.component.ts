@@ -29,11 +29,11 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
     public authService:AuthService,
     public userService:UserService,
     public dataService:DataService,
-    private router:Router,
+    public router:Router,
     private route:ActivatedRoute,
     public formBuilder:FormBuilder,
     ) {
-      super(authService, userService);
+      super(authService, userService, router);
     }
     
   ngOnInit(): void {
@@ -85,7 +85,7 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
             console.log("participant", participant);
             // console.log("data id group" + result.id_group);
             participant.forEach(part => {
-              this.userService.getInscription(part.id_gymkana_instance, part.id).subscribe(inscription => { // MIRAR  SUBSCRIBE
+              this.userService.getInscription(part.id_gymkana_instance, part.id).subscribe(inscription => { 
                 console.log("inscription ",inscription)
                 if(inscription.length == 1){
                   this.userService.getParticipantById(inscription[0].id_participant).subscribe(res => {
@@ -97,6 +97,7 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
                       this.dataService.storeAnwser(parseInt(localStorage.getItem("idGroup")) , this.idTest, id_gymkana, this.answer, this.test);
                        this.router.navigate([`/tests/${id_gymkana}`]);
                       this.addNumTest();
+                     /*  document.getElementById("imgRespondida").style.display = "block"; */
                     }
                   }, err => {
                       console.log("No se encontró el id del grupo")
