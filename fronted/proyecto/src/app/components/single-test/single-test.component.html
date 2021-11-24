@@ -20,10 +20,11 @@
                         </mat-form-field>
                     </div>
                     <div class="botones">
+                        <button class="btn btn-secondary" mat-raised-button  (click)="goBack(id)">Volver</button>
                         <button mat-raised-button color="primary" (click)="sendAnswer(id)"
                             [disabled]="form.invalid">Enviar</button>
                         
-                        <button mat-raised-button color="primary" (click)="goBack(id)">Volver</button>
+                        
                     </div>
                 </div>
             </div>
