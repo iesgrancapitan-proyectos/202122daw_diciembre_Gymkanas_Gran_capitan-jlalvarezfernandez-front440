@@ -44,7 +44,7 @@ Route::group([
     Route::post('/create-test', 'TestController@create');
     Route::get('/tests/edit-view/{id}', 'TestController@edit');
     Route::post('/tests/update/{id}', 'TestController@update');
-    Route::post('/tests/destroy/{id}', 'TestController@destroy');
+    Route::get('/tests/destroy/{id}', 'TestController@destroy');
 
     Route::get('/gk-instance', 'GkInstanceController@all');
     Route::get('/add-gk-instance', 'GkInstanceController@add');

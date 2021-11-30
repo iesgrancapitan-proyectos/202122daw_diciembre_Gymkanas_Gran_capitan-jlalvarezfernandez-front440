@@ -13,6 +13,7 @@
             <th>Criterio Aceptación</th>
             <th>Revisión</th>
             <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +37,7 @@
                 @endif
             </td>
             <td><button class="btn btn-success btn-sm"><a href="/admin/tests/edit-view/{{$test->id}}">Editar</a></button></td>
+            <td><button class="btn btn-danger btn-sm"><a href="/admin/tests/destroy/{{$test->id}}">Eliminar</a></button></td>
            
         </tr>
         @endforeach
