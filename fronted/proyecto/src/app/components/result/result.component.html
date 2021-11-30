@@ -1,12 +1,16 @@
 <app-home></app-home>
 <mat-card >
-    <mat-card-title>Resultado: </mat-card-title>
+    <mat-card-title> </mat-card-title>
     <mat-card-content>
-        <p>
-            Puntuación: {{score}}
-        </p>
-        <div *ngIf="checkup">
-            <p>Espere a que el organizador verifique algunas pruebas</p>
+        <h2 *ngIf="puntuacionOnline == 0">
+            
+            Puntuación final: {{score}}
+        </h2>
+        <div *ngIf="puntuacionOnline == 1">
+            <h2>Puntuación Actual: {{score}}</h2>
+            <p>Espere a que el organizador verifique algunas pruebas</p> 
+            <button class="btn btn-success" mat-raised-button  (click)="goBack(id)">Volver</button>
         </div>
+        
     </mat-card-content>
 </mat-card>

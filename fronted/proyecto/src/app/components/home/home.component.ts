@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.router.url);
     this.logued = this.userService.isLogued();
     this.email = this.userService.getEmail();
     this.profilePhoto = this.userService.getProfilePhoto();

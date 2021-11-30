@@ -13,6 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ResultComponent extends HomeComponent implements OnInit {
   score:number;
   checkup:boolean = false;
+  puntuacionOnline = 1;
+  id_gymkana: number;
   constructor(
     public authService:AuthService,
     public userService:UserService,
@@ -28,10 +30,18 @@ export class ResultComponent extends HomeComponent implements OnInit {
   }
   getDatos(){
     this.route.params.subscribe(params => {
-      if(params['score']){
-        this.score = params.score;
-      }
-      this.checkup = params['checkup'];
+      
+      this.score = params.score;
+      // if(params['score']){
+      //   console.log(this.score);
+      // }
+      this.checkup = params.checkup;
+      this.puntuacionOnline = params.puntuacionOnline;
+      this.id_gymkana = params.id_gymkana;
     });
   }
+  goBack(id_gymkana:number) {
+    this.router.navigate([`/tests/${this.id_gymkana}`]);
+   
+    }
 }

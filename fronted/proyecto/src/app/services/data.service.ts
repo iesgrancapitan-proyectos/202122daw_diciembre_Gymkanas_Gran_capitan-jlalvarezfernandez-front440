@@ -12,48 +12,47 @@ import { Test } from '../models/Test';
 export class DataService {
 
   private api = 'http://127.0.0.1:8000/api';
-  
+
   constructor(
     private http: HttpClient,
     private userService: UserService
   ) { }
-  
-  getAllActivesGymkanas(){
+
+  getAllActivesGymkanas() {
     const path = `${this.api}/gymkanas_instances_future`;
     return this.http.get<any>(path);
   }
 
-  getAllFutureGymkanas(){
+  getAllFutureGymkanas() {
     const path = `${this.api}/gymkanas_instances_active`;
     return this.http.get<any>(path);
   }
-  getTests(id:string){
+  getTests(id: string) {
     const path = `${this.api}/tests/${id}`;
     return this.http.get<any>(path);
   }
-  getSingleTest(id:string){
+  getSingleTest(id: string) {
     const path = `${this.api}/test/${id}`;
     return this.http.get<any>(path);
   }
 
- 
-  storeAnwser(idGroup:number, id_test:number, id_gymkana:number, answer:string, test:Test){
-    console.log("storeAn");
+
+  storeAnwser(idGroup: number, id_test: number, id_gymkana: number, answer: string, test: Test) {
     let testScore = test.score;
     let testReview = test.review;
     let testAcceptance_criteria = test.acceptance_criteria;
-    let score:number = 0;
-    let checkup:number = 0;
-    if(testReview == 0){
-      if(testAcceptance_criteria == answer){
+    let score: number = 0;
+    let checkup: number = 0;
+    if (testReview == 0) {
+      if (testAcceptance_criteria == answer) {
         score = testScore;
       }
-    }else{
+    } else {
       checkup = 1;
     }
     let date = new Date();
-    let start_date:any = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
-      +" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    let start_date: any = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+      + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
     //Mejorar controlando las fechas de inicio y fin con una con una peticion a la api
 
@@ -70,10 +69,10 @@ export class DataService {
       // console.log(data);
     });
   }
-  storeInscription(id_gymkana:number, id_participant:number, observations:string){
+  storeInscription(id_gymkana: number, id_participant: number, observations: string) {
     let date = new Date();
-    let dateNow = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
-      +" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    let dateNow = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+      + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     this.http.post<any>('http://127.0.0.1:8000/api/inscription/', {
       'id_gymkana_instance': id_gymkana,
       'id_participant': id_participant,
@@ -85,37 +84,37 @@ export class DataService {
     });
   }
 
-  getTestByIdGymkana(id_gymkana:number){
+  getTestByIdGymkana(id_gymkana: number) {
     const path = `${this.api}/gettests/${id_gymkana}`;
     return this.http.get<any>(path);
   }
-  getResponsesByIdTest(id_group:number, id_gymkana:number){
+  getResponsesByIdTest(id_group: number, id_gymkana: number) {
     const path = `${this.api}/getresponses/${id_group}/${id_gymkana}`;
     return this.http.get<any>(path);
   }
 
-  getNameGymkanaById(id:number){
+  getNameGymkanaById(id: number) {
     const path = `${this.api}/getnamegymkanabyid/${id}`;
     return this.http.get<any>(path);
   }
-  
-  getGymkanaByIdInstancia(id:number){
+
+  getGymkanaByIdInstancia(id: number) {
     const path = `${this.api}/getgymkanabyidinstancia/${id}`;
     return this.http.get<any>(path);
   }
-  
-  createParticipant( id_gymkana:number , id_group:number){
-    
+
+  createParticipant(id_gymkana: number, id_group: number) {
+
     this.http.post<any>('http://127.0.0.1:8000/api/createparticipant/', {
       'id_gymkana_instance': id_gymkana,
       'id_group': id_group,
-     
+
     }).subscribe(data => {
       // console.log(data);
     });
   }
 
-  getShowParticipant(id_gymkana_instance:number, id_group:number){
+  getShowParticipant(id_gymkana_instance: number, id_group: number) {
     const path = `${this.api}/getshowparticipant/${id_gymkana_instance}/${id_group}`;
     return this.http.get<any>(path);
 
@@ -123,11 +122,16 @@ export class DataService {
 
   // LIADO INSCRIPCIONES CON PARTICIPANTES
 
-  showParticipant( id_gymkana_instance:number , id_group:number){
+  showParticipant(id_gymkana_instance: number, id_group: number) {
     this.http.post<any>('http://127.0.0.1:8000/api/setparticipant/', {
       'id_gymkana_instance': id_gymkana_instance,
       'id_group': id_group,
     })
+  }
+
+  getCurrentScore(id_group: number) {
+    const path = `${this.api}/getcurrentscore/${id_group}`;
+    return this.http.get<any>(path);
   }
   //get Participant
   //front

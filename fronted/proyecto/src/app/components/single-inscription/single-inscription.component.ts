@@ -37,12 +37,9 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     this.formGroupInscription = new FormGroup({
       id_gk_instance: new FormControl(''),
       group: new FormControl(''),
-      // observations: new FormControl(''),
       
     });
     this.createSelect();
-    // this.groups.forEach(element => console.log(element));
-    // this.createIncription();
     
   }
   showSingleInscription() {
@@ -51,18 +48,14 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     });
 
     this.dataService.getGymkanaByIdInstancia(this.id).subscribe(gk_instance => {
-      console.log(gk_instance);
       this.dataService.getNameGymkanaById(gk_instance[0].id_gymkana).subscribe(res => {
-        console.log(res);
         this.nameGymkana = res[0].name;
-
       });
     });
 
      this.userService.getIdGroup(this.id).subscribe(res => {
       res.forEach(element => {
         this.userService.getGroupDescription(element.id_group).subscribe(group => {
-         
           this.group = group[0];
         })
       }); 
@@ -71,8 +64,6 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
 
   }
   signUp() {
-
-
     this.dataService.createParticipant(this.id, this.groupId);
     this.router.navigate(['/gymkanas']); 
 

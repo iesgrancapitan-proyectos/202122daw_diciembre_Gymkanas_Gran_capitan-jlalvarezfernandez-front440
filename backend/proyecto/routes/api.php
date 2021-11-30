@@ -33,6 +33,7 @@ Route::get('test/{id}', [App\Http\Controllers\Api\V1\TestController::class, 'sho
 
 //Group_test
 Route::post('group_test/', [App\Http\Controllers\Api\V1\Group_testController::class, 'store']);
+Route::get('getcurrentscore/{id_group}', [App\Http\Controllers\Api\V1\Group_testController::class, 'getCurrentScore']);
 
 //Group
 Route::get('getgroupdescription/{id_group}', [App\Http\Controllers\Api\V1\GroupController::class, 'getGroupDescription']);

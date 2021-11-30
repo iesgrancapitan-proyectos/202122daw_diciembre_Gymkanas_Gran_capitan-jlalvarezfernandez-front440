@@ -99,4 +99,6 @@ class GroupController extends Controller
     {
         return response()->json(GroupResource::collection(Groups::all()->where("id", $id)));
     }
+
+    
 }

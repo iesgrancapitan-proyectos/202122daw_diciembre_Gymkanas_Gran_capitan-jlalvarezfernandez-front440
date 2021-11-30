@@ -16,6 +16,7 @@ export class TestsComponent extends HomeComponent implements OnInit {
   answer:number = 0;
   checkup:boolean = false;
   score:number = 0;
+  id_gymkana:number;
  
   constructor(
     public authService:AuthService,
@@ -30,9 +31,12 @@ export class TestsComponent extends HomeComponent implements OnInit {
   ngOnInit(): void {
     this.showTestGymkana();
     this.idGroup = parseInt(localStorage.getItem("idGroup"));
+    
   }
   showTestGymkana(){
     this.route.params.subscribe(params => {
+      this.id_gymkana = params['id'];
+   
       if(params['id']){
         this.dataService.getTests(params['id']).subscribe((res:Test[]) => {
           this.tests = res;
@@ -44,12 +48,18 @@ export class TestsComponent extends HomeComponent implements OnInit {
     });
     
   }
-  makeTest(test:Test){
+
+  getCurrentScore() {
+    this.dataService.getCurrentScore(this.idGroup);
+  }
+  makeTest(test){
     this.router.navigate([`/test/${test.id}`]);
   }
-  getResponses(test:Test){
+  getResponses(tests){
+    console.log("get responses");
     this.checkup = false;
-    this.dataService.getResponsesByIdTest(this.idGroup, test.id).toPromise().
+    let puntuacionOnline = 1; //1: no has acabado la gymkana, 0 que si
+    this.dataService.getResponsesByIdTest(this.idGroup, tests.id).toPromise().
     then(res => {
       if(res.length > 0){
         this.answer+=1;
@@ -59,9 +69,37 @@ export class TestsComponent extends HomeComponent implements OnInit {
       }else{
         this.score+=res[0].score;
       }
-      if(this.answer == this.tests.length){
-        this.router.navigate([`/result/${this.score}/${this.checkup}`]);
+      if(this.answer == this.tests.length){ //todos los test estan respondidos
+        puntuacionOnline = 0;
+        this.router.navigate([`/result/${this.score}/${this.checkup}/${puntuacionOnline}`]);
       }
     }).catch(() => {});
+  }
+
+  showOnlineScore(tests){
+    this.score = 0;
+    tests.forEach(test => {
+      this.dataService.getResponsesByIdTest(this.idGroup, test.id).toPromise().
+      then(res => {
+      
+        if(res.length > 0){
+          this.answer+=1; //preguntas resueltas
+        }
+        if(res[0].checkup == 1){
+          this.checkup = true;
+        }else{
+          this.score+=res[0].score;
+        }
+        if(this.answer == this.tests.length){ //todos los test estan respondidos
+          
+          // puntuacionOnline = 0;
+          this.router.navigate([`/result/${this.score}/${this.checkup}/0`]); // VER PUNTACION FINAL
+        }else{
+         
+          
+          this.router.navigate([`/result/${this.score}/${this.checkup}/1/${this.id_gymkana}`]); // VER PUNTACION ONLINE
+        }
+      }).catch(() => {});
+    });
   }
 }

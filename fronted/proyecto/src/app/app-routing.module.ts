@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'gymkanas', component:GymkanasComponent, canActivate:[AuthGuardComponent]},
   {path: 'inscriptions', component:InscriptionsComponent, canActivate:[AuthGuardComponent]},
   {path: 'single-inscription/:id', component:SingleInscriptionComponent, canActivate:[AuthGuardComponent]},
-  {path: 'result/:score/:checkup', component:ResultComponent, canActivate:[AuthGuardComponent]},
+  {path: 'result/:score/:checkup/:puntuacionOnline/:id_gymkana', component:ResultComponent, canActivate:[AuthGuardComponent]},
   {path: 'tests/:id', component:TestsComponent, canActivate:[AuthGuardComponent]},
   {path: 'test/:id', component:SingleTestComponent, canActivate:[AuthGuardComponent]},
   {path: '**', component:LoginComponent},

@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Group_testCollection;
 use App\Http\Resources\V1\Group_testResource;
+use App\Models\Groups;
 use App\Models\Groups_test;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,6 @@ class Group_testController extends Controller
      * @param  \App\Models\Groups_test  $Group_test
      * @return \Illuminate\Http\Response
      */
-
     public function getResponses($id_group, $id_test)
     {
         return response()->json(Group_testResource::collection(Groups_test::all()->where("id_group", $id_group)->where("id_test", $id_test)));
@@ -89,5 +89,17 @@ class Group_testController extends Controller
     {
         $group_test->delete();
         return response()->json(null, 204);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Groups_test  $Group_test
+     * @return \Illuminate\Http\Response
+     */
+    public function getCurrentScore(Groups $id_group) // PONER GROUPS_TEST
+    {
+        return response()->json(Group_testResource::collection(Groups_test::all()->where("id_group", $id_group)));
+
     }
 }
