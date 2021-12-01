@@ -1,16 +1,25 @@
 <app-home></app-home>
-<mat-card >
+<mat-card>
     <mat-card-title> </mat-card-title>
     <mat-card-content>
-        <h2 *ngIf="puntuacionOnline == 0">
-            
-            Puntuación final: {{score}}
-        </h2>
+        <div>
+            <div *ngIf="puntuacionOnline == 0">
+                <h1>¡Enhorabuena has terminado la gymkana!</h1>
+                <br>
+                <h2>Puntuación final: {{score}}</h2>
+                <br>
+                <p>Pulsa el botón para comprobar que tu puntuación ha sido actualaizada por el organizador</p>
+                <button class="btn btn-success" mat-raised-button (click)="showOnlineScore(tests)">Actualizar Puntuacion</button>
+            </div>
+
+        </div>
+
         <div *ngIf="puntuacionOnline == 1">
             <h2>Puntuación Actual: {{score}}</h2>
-            <p>Espere a que el organizador verifique algunas pruebas</p> 
-            <button class="btn btn-success" mat-raised-button  (click)="goBack(id)">Volver</button>
+            <p>Espere a que el organizador verifique algunas pruebas</p>
+            <button class="btn btn-success" mat-raised-button (click)="goBack(id)">Volver</button>
         </div>
-        
+
     </mat-card-content>
 </mat-card>
+

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\User_Groups;
 use App\Models\User;
 use App\Models\Groups;
+use App\Models\Gymkana_instance;
 
 class UserGroupController extends Controller{
     /**
@@ -87,5 +88,12 @@ class UserGroupController extends Controller{
         $group->save();
         return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
+
+       /**
+     * Show all user-group
+     * 
+     */
+
+
 
 }

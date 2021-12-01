@@ -12,6 +12,7 @@
             <p><a href="/admin/users-groups">Usuarios grupos</a></p>
             <p><a href="/admin/participants">Participantes</a></p>
             <p><a href="/admin/inscriptions">Inscripciones</a></p>
+            <p><a href="/admin/score-gymkana">Puntuación Gymkana</a></p>
         </div>
         <div class="col-md-10">
             <div class="card">

@@ -56,7 +56,6 @@ export class TestsComponent extends HomeComponent implements OnInit {
     this.router.navigate([`/test/${test.id}`]);
   }
   getResponses(tests){
-    console.log("get responses");
     this.checkup = false;
     let puntuacionOnline = 1; //1: no has acabado la gymkana, 0 que si
     this.dataService.getResponsesByIdTest(this.idGroup, tests.id).toPromise().
@@ -71,7 +70,7 @@ export class TestsComponent extends HomeComponent implements OnInit {
       }
       if(this.answer == this.tests.length){ //todos los test estan respondidos
         puntuacionOnline = 0;
-        this.router.navigate([`/result/${this.score}/${this.checkup}/${puntuacionOnline}`]);
+        this.router.navigate([`/result/${this.score}/${this.checkup}/${puntuacionOnline}/${this.id_gymkana}`]);
       }
     }).catch(() => {});
   }
@@ -81,6 +80,9 @@ export class TestsComponent extends HomeComponent implements OnInit {
     tests.forEach(test => {
       this.dataService.getResponsesByIdTest(this.idGroup, test.id).toPromise().
       then(res => {
+        if(res.length == 0){
+          this.router.navigate([`/result/${this.score}/${this.checkup}/1/${this.id_gymkana}`]);
+        }
       
         if(res.length > 0){
           this.answer+=1; //preguntas resueltas
@@ -95,11 +97,10 @@ export class TestsComponent extends HomeComponent implements OnInit {
           // puntuacionOnline = 0;
           this.router.navigate([`/result/${this.score}/${this.checkup}/0`]); // VER PUNTACION FINAL
         }else{
-         
-          
           this.router.navigate([`/result/${this.score}/${this.checkup}/1/${this.id_gymkana}`]); // VER PUNTACION ONLINE
         }
       }).catch(() => {});
     });
   }
+ 
 }

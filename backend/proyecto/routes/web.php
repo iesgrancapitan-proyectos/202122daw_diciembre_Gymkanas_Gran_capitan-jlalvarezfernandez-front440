@@ -87,8 +87,11 @@ Route::group([
     Route::get('/inscriptions/accept/{id}', 'InscriptionController@accept');
     Route::get('/inscriptions/deny/{id}', 'InscriptionController@deny');
 
-    
 
+    Route::get('/score-gymkana', 'GKInstanceController@score');
+
+    
+    
 });
 
 Route::group([
