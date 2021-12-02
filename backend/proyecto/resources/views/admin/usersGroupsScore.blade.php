@@ -12,16 +12,14 @@
         </thead>
         <tbody>
             @foreach ($gk_instance as $gymkana)
+          
                 <tr>
                     <td>{{ DB::table('gymkanas')->where('id', $gymkana->id_gymkana)->first()->name }}</td>
 
-                    @foreach ($groups as $group)
-                        <td>{{ $group->id }}</td>
-                        {{-- <td>{{ DB::table('participants')->where('id_group', $group->id)->first()->id }}</td> --}}
-                        {{-- @if (DB::table('participants')->where('id_group', $group->id) == $group->id)
-                            <td>{{ DB::table('groups')->find($group->id)->description }}</td>
-                        @endif --}}
-                    @endforeach
+                   
+                        <td>{{DB::table('groups')->where('id',(DB::table('participants')->where('id_gymkana_instance', $gymkana->id)->first()->id_group))->first()->description}}</td>
+                        <td>{{DB::table('groups_test')->where('id_group',(DB::table('groups')->where('id',(DB::table('participants')->where('id_gymkana_instance', $gymkana->id)->first()->id_group))->first()->id))->sum('score')}}</td>
+                        
                 </tr>
             @endforeach
         </tbody>
