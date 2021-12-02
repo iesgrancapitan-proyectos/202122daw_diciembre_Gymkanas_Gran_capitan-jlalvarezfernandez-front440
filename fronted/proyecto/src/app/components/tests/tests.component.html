@@ -13,7 +13,7 @@
           </mat-card-title>
           <p class="preguntas">
             {{test.description}}
-          <img *ngIf="i &lt; answer" id="imgRespondida" [src]="'assets/img/check.png'"  title="Pregunta Respondida" width="45px" height="35px">
+          <img *ngIf="i &lt; answer" id="imgRespondida" [src]="'assets/img/comprobar.png'"  title="Pregunta Respondida" width="45px" height="35px">
           </p>
           <button mat-raised-button [disabled]=" i &gt; answer" 
           color="primary" (click)="makeTest(test)">Acceder</button>

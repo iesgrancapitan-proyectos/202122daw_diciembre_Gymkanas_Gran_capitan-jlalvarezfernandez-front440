@@ -129,16 +129,9 @@ export class DataService {
     })
   }
 
-  getCurrentScore(id_group: number) {
-    const path = `${this.api}/getcurrentscore/${id_group}`;
+  getCurrentScore() {
+    const path = `${this.api}/getcurrentscore`;
     return this.http.get<any>(path);
   }
-  //get Participant
-  //front
-  // DATASERVICE:CREAR METODO QUE DEVUELVA PARTICIPANTE -> ARG(GYMKANA_INSTANCE, ID_GROUP) X
-  // CREAR METODO EN TYPESCRIPT DE SINGLEINSCRIPTION QUE EJECUTE EL MéTODO DE DATA SERVICE
-
-  //back
-  // CREAR RUTA EN LA API (post)
-  // CREAR METODO EN EL CONTROLADOR DE PARTICIPANTES DE LA API  
+   
 }

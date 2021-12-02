@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 //Users
 Route::post('users', [App\Http\Controllers\Api\V1\UserController::class, 'store']);
 Route::get('get_id_user/{email}', [App\Http\Controllers\Api\V1\UserController::class, 'show']);
@@ -33,7 +34,7 @@ Route::get('test/{id}', [App\Http\Controllers\Api\V1\TestController::class, 'sho
 
 //Group_test
 Route::post('group_test/', [App\Http\Controllers\Api\V1\Group_testController::class, 'store']);
-Route::get('getcurrentscore/{id_group}', [App\Http\Controllers\Api\V1\Group_testController::class, 'getCurrentScore']);
+Route::get('getcurrentscore', [App\Http\Controllers\Api\V1\Group_testController::class, 'getCurrentScore']);
 
 //Group
 Route::get('getgroupdescription/{id_group}', [App\Http\Controllers\Api\V1\GroupController::class, 'getGroupDescription']);

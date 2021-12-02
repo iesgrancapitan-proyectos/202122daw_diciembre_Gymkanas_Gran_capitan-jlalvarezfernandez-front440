@@ -84,7 +84,7 @@ class Group_testController extends Controller
      * @param  \App\Models\Group_test  $Group_test
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy(Groups_test $group_test)
     {
         $group_test->delete();
@@ -97,9 +97,8 @@ class Group_testController extends Controller
      * @param  \App\Models\Groups_test  $Group_test
      * @return \Illuminate\Http\Response
      */
-    public function getCurrentScore(Groups $id_group) // PONER GROUPS_TEST
+    public function getCurrentScore() // PONER GROUPS_TEST
     {
-        return response()->json(Group_testResource::collection(Groups_test::all()->where("id_group", $id_group)));
-
+        return response()->json(Group_testResource::collection(Groups_test::all()));
     }
 }
