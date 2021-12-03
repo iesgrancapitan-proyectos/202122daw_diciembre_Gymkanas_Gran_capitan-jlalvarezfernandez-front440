@@ -14,20 +14,24 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($tests as $test)
+            {{-- @foreach ($tests as $test)
                 <tr>
-                    {{-- <td>{{ DB::table('gymkanas')->where('id', $test->id_gymkana)->first()->name }}</td>
-            <td>{{ DB::table('gymkanas')->where('id', $test->id_gymkana)->first()->name }}</td>
-            <td>{{ $test->name }}</td>
-            <td>{{ $test->description }}</td>
-            <td>{{ $test->acceptance_criteria }}</td>
-            <td>{{ $test->score }}</td>
-            <td><button class="btn btn-success btn-sm"><a href="/organizador/tests/{{$test->id}}">Ver</a></button></td> --}}
 
-                    {{-- <td>{{ DB::table('gymkanas')->where('id', $test->id_gymkana)->first()->name }}</td> --}}
-                    <!-- Esto funciona !-->
-                    <td>{{ DB::table('gymkanas')->where('id', $group_test->first()->id_gymkana)->first()->name }}</td>
-                    {{-- <td>{{ $group_test }}</td> --}}
+                    <td>{{ DB::table('gymkanas')->where('id', $test->id_gymkana)->first()->name }}</td>
+                    <td>{{ $test->name }}</td>
+                    <td>{{ $test->description }}</td>
+                    <td>{{ $test->acceptance_criteria }}</td>
+                    <td>{{ $test->score }}</td>
+                    
+                    <td><button class="btn btn-success btn-sm"><a
+                                href="/organizador/tests/{{ $test->id }}">Ver</a></button></td>
+                </tr>
+            @endforeach --}}
+
+            @foreach ($group_test as $test)
+                <tr>
+                    
+                    <td>{{ DB::table('gymkanas')->where('id', $tests->first()->id_gymkana)->first()->name }}</td>
                     <td>{{ DB::table('tests')->where('id', $test->id_test)->first()->name }}</td>
                     <td>{{ DB::table('tests')->where('id', $test->id_test)->first()->description }}</td>
                     <td>{{ DB::table('tests')->where('id', $test->id_test)->first()->acceptance_criteria }}</td>

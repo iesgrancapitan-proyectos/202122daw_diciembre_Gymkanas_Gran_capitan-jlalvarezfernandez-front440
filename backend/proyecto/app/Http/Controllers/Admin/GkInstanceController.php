@@ -13,11 +13,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Groups;
+use App\Models\Groups_test;
 use Illuminate\Http\Request;
 use App\Models\Gymkana_instance;
 use App\Models\Gymkana;
 use App\Models\Participants;
+use App\Models\Test;
 use Carbon\Carbon;
+use DB;
 
 class GkInstanceController extends Controller
 {
@@ -138,7 +141,21 @@ class GkInstanceController extends Controller
 
         $gk_instance = Gymkana_instance::all();
         $groups = Groups::all();
-       
+
         return view("admin.usersGroupsScore", compact("gk_instance", "groups"));
+    }
+
+    public function result(Request $request)
+    {
+        $gymkana = Gymkana::find($request->id);
+        // $gk_instance = Gymkana_instance::all();
+        // $groups = Groups::where("id",  
+        //         (Groups_test::where("id_test", 
+        //         (Test::where("id_gymkana", $request->id)->pluck("id")))->pluck("id_group")))->get();
+
+        $groups = DB::select("SELECT * FROM `groups` WHERE `id` IN (SELECT `id_group` FROM `groups_test` WHERE `id_test` IN (SELECT `id` FROM `tests` WHERE `id_gymkana` = ?))", [$request->id]);
+
+        // return (Groups_test::where("id_test", Test::where("id_gymkana", $request->id)->pluck("id"))->get());
+        return view("admin.resultGymkana", compact("groups", "gymkana"));
     }
 }

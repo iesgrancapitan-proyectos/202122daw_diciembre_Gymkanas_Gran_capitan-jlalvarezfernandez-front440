@@ -13,6 +13,7 @@
             <th>Estado</th>
             <th>Editar</th>
             <th>Eliminar</th>
+            <th>Resultado</th>
     </thead>
     <tbody>
         @foreach($gk_instance as $gymkana)
@@ -37,6 +38,8 @@
                     <input type="submit" value="Eliminar" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar?...')">
                 </form>
             </td>
+            <td><a class= "btn btn-success btn-sm text-white" href="/admin/gk-instance/result/{{$gymkana->id_gymkana}}">Ver</a></td>
+
         </tr>
         </tr>
         @endforeach

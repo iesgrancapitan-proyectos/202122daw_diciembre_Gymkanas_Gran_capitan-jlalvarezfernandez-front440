@@ -52,6 +52,7 @@ Route::group([
     Route::get('/gk-instance/edit-view/{id}', 'GkInstanceController@edit');
     Route::post('/gk-instance/update/{id}', 'GkInstanceController@update');
     Route::post('/gk-instance/destroy/{id}', 'GkInstanceController@destroy');
+    Route::get('/gk-instance/result/{id}', 'GkInstanceController@result');
     
     Route::get('/users', 'UserController@all');
     Route::get('/add-user', 'UserController@add');
@@ -110,8 +111,8 @@ Route::group([
 ], function(){
     Route::get('/tests', 'TestController@all');
     Route::get('/tests/{id}', 'TestController@allAnswer');
-    Route::get('/tests/correct/{id}', 'TestController@correctAnswer');
-    Route::get('/tests/incorrect/{id}', 'TestController@incorrectAnswer');
+    Route::get('/tests/correct/{id}/{id_group}', 'TestController@correctAnswer');
+    Route::get('/tests/incorrect/{id}/{id_group}', 'TestController@incorrectAnswer');
 });
 
 //routes alumno

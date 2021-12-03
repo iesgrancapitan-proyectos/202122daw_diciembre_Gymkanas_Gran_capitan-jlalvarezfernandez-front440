@@ -26,9 +26,9 @@
                     <td>{{ $g_test->answer }}</td>
                     <td>{{ DB::table('tests')->where('id', $g_test->id_test)->first()->score }}</td>
                     <td><button class="btn btn-success btn-sm"><a
-                                href="/organizador/tests/correct/{{ $g_test->id_test }}">Aceptada</a></button></td>
+                                href="/organizador/tests/correct/{{ $g_test->id_test }}/{{$g_test->id_group}}">Aceptada</a></button></td>
                     <td><button class="btn btn-danger btn-sm"><a
-                                href="/organizador/tests/incorrect/{{ $g_test->id_test }}">Rechazada</a></button></td>
+                                href="/organizador/tests/incorrect/{{ $g_test->id_test }}/{{$g_test->id_group}}">Rechazada</a></button></td>
 
                 </tr>
             @endforeach
