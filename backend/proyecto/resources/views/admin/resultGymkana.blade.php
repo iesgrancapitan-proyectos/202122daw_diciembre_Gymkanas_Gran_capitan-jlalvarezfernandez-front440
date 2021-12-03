@@ -6,11 +6,8 @@
     <table class="table">
         <thead>
             <tr>
-
                 <th>Grupo</th>
                 <th>Puntuación</th>
-                
-
             </tr>
         </thead>
         <tbody>
