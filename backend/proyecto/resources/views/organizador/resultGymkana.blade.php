@@ -1,6 +1,6 @@
-@extends('admin.base')
+@extends('organizador.base')
 @section('titulo-pagina', 'Grupos de Usuarios')
-@section('contenido')
+@section('contenido3')
     <h1>Resultados de la Gymkana {{ $gymkana->name }}</h1>
     <br>
     <table class="table">

@@ -113,6 +113,10 @@ Route::group([
     Route::get('/tests/{id}', 'TestController@allAnswer');
     Route::get('/tests/correct/{id}/{id_group}', 'TestController@correctAnswer');
     Route::get('/tests/incorrect/{id}/{id_group}', 'TestController@incorrectAnswer');
+    Route::get('/gk-instance', 'GkInstanceController@all');
+    
+    Route::get('/gk-instance/result/{id}', 'GkInstanceController@result');
+
 });
 
 //routes alumno

@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-1">
             <p><a href="/organizador/tests">Pruebas</a></p>
+            <p><a href="/organizador/gk-instance">Instancias Gymkanas</a></p>
         </div>
         <div class="col-md-10">
             <div class="card">
