@@ -88,7 +88,6 @@ export class SingleTestComponent extends HomeComponent implements OnInit {
                       this.dataService.storeAnwser(parseInt(localStorage.getItem("idGroup")) , this.idTest, id_gymkana, this.answer, this.test);
                        this.router.navigate([`/tests/${id_gymkana}`]);
                       this.addNumTest();
-                     /*  document.getElementById("imgRespondida").style.display = "block"; */
                     }
                   }, err => {
                       console.log("No se encontró el id del grupo")

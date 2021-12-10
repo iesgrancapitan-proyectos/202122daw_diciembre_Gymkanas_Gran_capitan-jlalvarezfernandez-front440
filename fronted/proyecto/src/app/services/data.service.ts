@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// import { Api } from '../interfaces/api';
 import { map, catchError } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { Test } from '../models/Test';
@@ -54,8 +53,6 @@ export class DataService {
     let start_date: any = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
-    //Mejorar controlando las fechas de inicio y fin con una con una peticion a la api
-
     this.http.post<any>('http://127.0.0.1:8000/api/group_test/', {
       'id_group': idGroup,
       'id_test': id_test,
@@ -66,7 +63,6 @@ export class DataService {
       'start_date': start_date,
       'finish_date': start_date,
     }).subscribe(data => {
-      // console.log(data);
     });
   }
   storeInscription(id_gymkana: number, id_participant: number, observations: string) {
@@ -80,7 +76,6 @@ export class DataService {
       'observations': observations,
       'checkup': 0,
     }).subscribe(data => {
-      // console.log(data);
     });
   }
 
@@ -110,7 +105,6 @@ export class DataService {
       'id_group': id_group,
 
     }).subscribe(data => {
-      // console.log(data);
     });
   }
 
@@ -120,7 +114,6 @@ export class DataService {
 
   }
 
-  // LIADO INSCRIPCIONES CON PARTICIPANTES
 
   showParticipant(id_gymkana_instance: number, id_group: number) {
     this.http.post<any>('http://127.0.0.1:8000/api/setparticipant/', {
