@@ -1,7 +1,6 @@
 @extends('organizador.base')
 @section('titulo-pagina', 'Test')
 @section('contenido3')
-    {{-- <p><a href="/admin/add-test"><button clas="btn btn-primary btn-sm">Nueva prueba</button></a></p> --}}
     <table class="table">
         <thead>
             <tr>

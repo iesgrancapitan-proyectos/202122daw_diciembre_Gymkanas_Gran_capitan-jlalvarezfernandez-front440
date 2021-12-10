@@ -87,6 +87,11 @@ class ParticipantController extends Controller
         return response()->json(null, 204);
     }
 
+    /**
+     * show participants
+     *
+     */
+
     public function getShowParticipant($id_gymkana_instance, $id_group)
     {
         return response()->json(ParticipantResource::collection(Participants::all()->where("id_gymkana_instance", $id_gymkana_instance)->where("id_group", $id_group)));

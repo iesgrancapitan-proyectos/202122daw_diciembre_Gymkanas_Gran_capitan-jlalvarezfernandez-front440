@@ -9,11 +9,11 @@
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Perfil</th>
-            {{-- <th>Curso</th> --}}
+            
             <th>Estado</th>
             <th>Organizador</th>
             <th>Editar</th>
-            {{-- <th>Eliminar</th> --}}
+            
             <th></th>
         </tr>
     </thead>
@@ -24,7 +24,6 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->surname }}</td>
             <td>{{ $user->perfil }}</td>
-            {{-- <td>{{ $user->curso }}</td> --}}
             <td>
                 @if ($user->estado == 1)
                     <button class="btn btn-info btn-sm"><a href="/admin/users/deactivate/{{$user->id}}">Desactivar</a></button></td>

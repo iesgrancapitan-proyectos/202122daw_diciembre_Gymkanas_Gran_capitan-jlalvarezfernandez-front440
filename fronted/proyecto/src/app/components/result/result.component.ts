@@ -34,7 +34,6 @@ export class ResultComponent extends HomeComponent implements OnInit {
   }
   getDatos() {
     this.route.params.subscribe(params => {
-      console.log(params)
       this.score = params.score;
       this.checkup = params.checkup;
       this.puntuacionOnline = params.puntuacionOnline;

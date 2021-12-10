@@ -31,9 +31,9 @@
             <td>{{ $test->acceptance_criteria }}</td>
             <td>
                 @if ($test->review == 0)
-                    Sí
-                @else
                     No
+                @else
+                    Si
                 @endif
             </td>
             <td><button class="btn btn-success btn-sm"><a href="/admin/tests/edit-view/{{$test->id}}">Editar</a></button></td>

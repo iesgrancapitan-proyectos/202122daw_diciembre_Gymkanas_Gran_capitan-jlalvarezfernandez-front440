@@ -7,14 +7,9 @@
         <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
 
         <div class="col-md-6">
-            {{--<input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" 
-                value="{{ DB::table('groups')->where('id', $id)->first()->description }}" required autocomplete="description" autofocus> --}}
-
             <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description"
                     value="{{ DB::table('groups')->where('id', $id)->first()->description }}" required autocomplete="description" autofocus>
             
-           
-
             @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

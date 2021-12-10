@@ -51,7 +51,7 @@
 
         <div class="col-md-6">
             <input id="acceptance_criteria" type="text" class="form-control @error('acceptance_criteria') is-invalid @enderror"
-                name="acceptance_criteria" value="{{ DB::table("tests")->where("id", $id)->first()->acceptance_criteria }}" required autocomplete="acceptance_criteria" autofocus>
+                name="acceptance_criteria" value="{{ DB::table("tests")->where("id", $id)->first()->acceptance_criteria }}" {{-- required autocomplete="acceptance_criteria" --}} autofocus>
 
             @error('acceptance_criteria')
                 <span class="invalid-feedback" role="alert">

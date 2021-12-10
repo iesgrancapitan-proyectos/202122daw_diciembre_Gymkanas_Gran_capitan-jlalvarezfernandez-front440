@@ -7,6 +7,7 @@
                     <mat-label>
                         <h4>Título: {{myName}}</h4>
                     </mat-label>
+                    <br>
                     <!-- <mat-card-img *ngIf="testPhoto" alt="Card image cap" src={{test.image}}></mat-card-img> -->
                     <p>
                         {{myDescription}}
@@ -15,7 +16,7 @@
 
                     <div [formGroup]="form">
                         <mat-form-field class="example-form-field">
-                            <input matInput type="text" placeholder="Respuesta" id="answer" formControlName="response">
+                            <input matInput type="text" placeholder="Hay preguntas que no necesitan una respuesta solo pulsa prueba realizada" id="answer" formControlName="response">
                             <!-- <mat-error *ngIf="form.controls.response.invalid">Es requerido</mat-error> -->
                         </mat-form-field>
                     </div>

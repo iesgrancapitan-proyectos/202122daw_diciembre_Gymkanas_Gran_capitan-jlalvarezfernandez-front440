@@ -1,7 +1,6 @@
 @extends('admin.base')
 @section("titulo-pagina", "Test")
 @section('contenido')
-{{-- <p><a href="add-gymkana"><button clas="btn btn-primary btn-sm">Nueva Gymkana</button></a></p> --}}
 <table class="table">
     <thead>
         <tr>

@@ -17,11 +17,7 @@
 
                     <td>{{ $grupo->description }}</td>
                     <td>{{ DB::table('groups_test')->where('id_group', $grupo->id)->sum('score') }}</td>
-                    {{-- <td>{{ DB::table('groups_test')->where('id_group', $grupo->id)->orderby('sum("score")') }}</td> --}}
-
-                    {{-- <td>{{ DB::table('groups_test')->where('id_group', $grupo->id)->first()->finish_date }}</td>
-
-                     <td>{{DB::table('groups_test')->where('id_group',(DB::table('groups')->where('id',(DB::table('participants')->where('id_gymkana_instance', $gymkana->id)->first()->id_group))->first()->id))->sum('score')}}</td> --}}
+                  
                 </tr>
             @endforeach
         </tbody>

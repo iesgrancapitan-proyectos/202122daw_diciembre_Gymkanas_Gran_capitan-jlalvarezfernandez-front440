@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Models\Inscriptions;
 
 class InscriptionController extends Controller{
+    
     /**
      * Show all participants
      * 

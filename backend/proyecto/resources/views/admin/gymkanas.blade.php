@@ -38,8 +38,7 @@
                     <input type="submit" value="Eliminar" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar?...')">
                 </form>
             </td>
-            {{-- <td><button class="btn btn-danger btn-sm"><a href="/admin/gymkanas/destroy/{{$gymkana->id}}">Borrar</a></td></button> --}}
-            {{-- <td><button class="btn btn-warning btn-sm"><a href="{{ view('editViewGk',['gymkana' => $gymkana]) }}">Editar</td></button> --}}
+           
         </tr>
         @endforeach
     </tbody>

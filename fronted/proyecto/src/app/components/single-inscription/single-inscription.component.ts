@@ -66,17 +66,6 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
   signUp() {
     this.dataService.createParticipant(this.id, this.groupId);
     this.router.navigate(['/gymkanas']); 
-
-    // let observations = (document.getElementById("observations") as HTMLInputElement).value;
-    // var id_participant:number;
-    // console.log(id_gymkana);
-    // console.log(group);
-    // console.log(observations );
-    // this.userService.getIdParticipant(group).subscribe(res => {
-    //   id_participant = res[0].id;
-    //   this.dataService.storeInscription(id_gymkana, id_participant, observations)
-    // });
-    // this.router.navigate(['/inscriptions']);
   }
 
   createSelect() {
@@ -102,14 +91,7 @@ export class SingleInscriptionComponent extends HomeComponent implements OnInit 
     });
   }
 
-  // showNameGymkana() {
-  //   this.userService.getAllUserGroup().subscribe(name => {
-  //     this.dataService.getNameGymkanaById(ele)
-  //     this.groups.push(name);
-  //   })
-  // }
-
-  // LIADO INSCRIPCIONES CON PARTICIPANTES
+ 
   createIncription() {
     this.dataService.showParticipant(parseInt((document.getElementById("id_gymkana_instance") as HTMLInputElement).value), parseInt(localStorage.getItem("id")));
   }

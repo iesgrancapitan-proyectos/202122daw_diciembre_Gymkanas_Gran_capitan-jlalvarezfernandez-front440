@@ -136,6 +136,11 @@ class GkInstanceController extends Controller
         return redirect("admin/gk-instance")->with("status", "Instancia Gymkana modificada correctamente");
     }
 
+    /**
+     * Score
+     * 
+     */
+
     public function score()
     {
 
@@ -145,17 +150,18 @@ class GkInstanceController extends Controller
         return view("admin.usersGroupsScore", compact("gk_instance", "groups"));
     }
 
+    /**
+     * Result
+     * 
+     * @param Request $request
+     */
+
     public function result(Request $request)
     {
         $gymkana = Gymkana::find($request->id);
-        // $gk_instance = Gymkana_instance::all();
-        // $groups = Groups::where("id",  
-        //         (Groups_test::where("id_test", 
-        //         (Test::where("id_gymkana", $request->id)->pluck("id")))->pluck("id_group")))->get();
-
+        
         $groups = DB::select("SELECT * FROM `groups` WHERE `id` IN (SELECT `id_group` FROM `groups_test` WHERE `id_test` IN (SELECT `id` FROM `tests` WHERE `id_gymkana` = ?))", [$request->id]);
 
-        // return (Groups_test::where("id_test", Test::where("id_gymkana", $request->id)->pluck("id"))->get());
         return view("admin.resultGymkana", compact("groups", "gymkana"));
     }
 }

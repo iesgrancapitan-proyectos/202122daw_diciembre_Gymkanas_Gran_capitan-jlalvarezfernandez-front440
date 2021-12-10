@@ -13,6 +13,11 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller{
+
+  /**
+   * validatelogin
+   * 
+   */
     
     public function validateLogin(Request $request){
       return $request->validate([
@@ -21,6 +26,13 @@ class LoginController extends Controller{
         'device' => 'required'
       ]);
     }
+
+    
+  /**
+   * Do login
+   * 
+   */
+  
     public function login(Request $request)
     {
         $this->validateLogin($request);

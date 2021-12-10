@@ -4,8 +4,7 @@
  * Controlador UserGroupController
  * Este controlador sirve para controlar los grupos que van aparticipar en la app
  *    - podemos editarlos o eliminarlos
- *     
- * 
+ *    
  */
 
 namespace App\Http\Controllers\Admin;
@@ -88,12 +87,5 @@ class UserGroupController extends Controller{
         $group->save();
         return redirect("admin/users-groups")->with("status", "Grupo modificado correctamente");
     }
-
-       /**
-     * Show all user-group
-     * 
-     */
-
-
 
 }
