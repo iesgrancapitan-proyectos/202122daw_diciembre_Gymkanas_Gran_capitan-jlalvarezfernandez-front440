@@ -161,7 +161,6 @@ class GkInstanceController extends Controller
         $gymkana = Gymkana::find($request->id);
         
         $groups = DB::select("SELECT * FROM `groups` WHERE `id` IN (SELECT `id_group` FROM `groups_test` WHERE `id_test` IN (SELECT `id` FROM `tests` WHERE `id_gymkana` = ?))", [$request->id]);
-
         return view("admin.resultGymkana", compact("groups", "gymkana"));
     }
 }

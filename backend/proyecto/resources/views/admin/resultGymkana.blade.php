@@ -11,12 +11,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($groups as $grupo)
-
+            @php
+                $grupos_total = [];
+                foreach ($groups as $index => $grupo) {
+                    $grupo_array  = (array)$grupo;
+                    $grupo_array['score'] =  DB::table('groups_test')->where('id_group', $grupo->id)->sum('score');
+                    $grupos_total[] = $grupo_array;
+                }
+                $score = array_column($grupos_total, 'score');
+                
+                array_multisort($score, SORT_DESC, $grupos_total);
+            @endphp
+            @foreach ($grupos_total as $grupo)
                 <tr>
-
-                    <td>{{ $grupo->description }}</td>
-                    <td>{{ DB::table('groups_test')->where('id_group', $grupo->id)->sum('score') }}</td>
+                    <td>{{ $grupo['description'] }}</td>
+                    <td>{{ $grupo['score'] }}</td>
                 </tr>
             @endforeach
         </tbody>
