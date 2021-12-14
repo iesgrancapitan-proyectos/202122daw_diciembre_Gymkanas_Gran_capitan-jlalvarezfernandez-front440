@@ -11,6 +11,7 @@ import { Test } from '../models/Test';
 export class DataService {
 
   private api = 'http://127.0.0.1:8000/api';
+  // private api = 'http://127.0.0.1:8000/api';
 
   constructor(
     private http: HttpClient,
