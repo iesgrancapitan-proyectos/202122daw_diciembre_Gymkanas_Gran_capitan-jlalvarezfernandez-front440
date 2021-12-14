@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   getUserDataId(email:string){
     this.userService.getIdUser(email).subscribe(data => {
+      console.log(data[0].id);
       if(data){
         localStorage.setItem("id", data[0].id);
       }
