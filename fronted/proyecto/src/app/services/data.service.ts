@@ -10,8 +10,8 @@ import { Test } from '../models/Test';
 })
 export class DataService {
 
-  private api = 'http://127.0.0.1:8000/api';
   // private api = 'http://127.0.0.1:8000/api';
+  private api = 'http://frontyincanas.iesgrancapitan.org/api';
 
   constructor(
     private http: HttpClient,
@@ -54,7 +54,7 @@ export class DataService {
     let start_date: any = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
-    this.http.post<any>('http://127.0.0.1:8000/api/group_test/', {
+    this.http.post<any>(`${this.api}/group_test/`, {
       'id_group': idGroup,
       'id_test': id_test,
       'id_gymkana': id_gymkana,
@@ -70,7 +70,7 @@ export class DataService {
     let date = new Date();
     let dateNow = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    this.http.post<any>('http://127.0.0.1:8000/api/inscription/', {
+    this.http.post<any>(`${this.api}/inscription/`, {
       'id_gymkana_instance': id_gymkana,
       'id_participant': id_participant,
       'date': dateNow,
@@ -101,7 +101,7 @@ export class DataService {
 
   createParticipant(id_gymkana: number, id_group: number) {
 
-    this.http.post<any>('http://127.0.0.1:8000/api/createparticipant/', {
+    this.http.post<any>(`${this.api}/createparticipant/`, {
       'id_gymkana_instance': id_gymkana,
       'id_group': id_group,
 
@@ -117,7 +117,7 @@ export class DataService {
 
 
   showParticipant(id_gymkana_instance: number, id_group: number) {
-    this.http.post<any>('http://127.0.0.1:8000/api/setparticipant/', {
+    this.http.post<any>(`${this.api}/setparticipant/`, {
       'id_gymkana_instance': id_gymkana_instance,
       'id_group': id_group,
     })

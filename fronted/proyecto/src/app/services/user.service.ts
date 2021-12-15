@@ -9,7 +9,9 @@ export class UserService {
   public user:User | undefined;
   public email:string =  '';
   public id:string;
-  private api = 'http://127.0.0.1:8000/api';
+  // private api = 'http://127.0.0.1:8000/api';
+  private api = 'http://frontyincanas.iesgrancapitan.org/api';
+
 
   constructor(
     private http: HttpClient,
