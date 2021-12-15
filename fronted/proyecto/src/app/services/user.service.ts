@@ -43,43 +43,52 @@ export class UserService {
   }
   
   getIdUser(email:string){
-    const path = `${this.api}/get_id_user/${email}`;
+    // const path = `${this.api}/get_id_user/${email}`;
+    const path = `/get_id_user/${email}`;
     return this.http.get<any>(path);
   }
 
   getIdGroup(id:number){
-    const path = `${this.api}/getgroup/${id}`;
+    // const path = `${this.api}/getgroup/${id}`;
+    const path = `/getgroup/${id}`;
     return this.http.get<any>(path);
   }
 
   getGroupDescription(id:number){
-    const path = `${this.api}/getgroupdescription/${id}`;
+    // const path = `${this.api}/getgroupdescription/${id}`;
+    const path = `/getgroupdescription/${id}`;
     return this.http.get<any>(path);
   }
   getIdParticipant(id_group:number){
-    const path = `${this.api}/getparticipant/${id_group}`;
+    // const path = `${this.api}/getparticipant/${id_group}`;
+    const path = `/getparticipant/${id_group}`;
     return this.http.get<any>(path);
   }
   getInscription(id_gymkana_instance:number, id_participant:number){
-    const path = `${this.api}/getinscription/${id_gymkana_instance}/${id_participant}`;
+    // const path = `${this.api}/getinscription/${id_gymkana_instance}/${id_participant}`;
+    const path = `/getinscription/${id_gymkana_instance}/${id_participant}`;
     return this.http.get<any>(path);
   }
   getParticipantById(id:number){
-    const path = `${this.api}/getparticipantbyid/${id}`;
+    // const path = `${this.api}/getparticipantbyid/${id}`;
+    const path = `/getparticipantbyid/${id}`;
     return this.http.get<any>(path);
   }
   getParticipantByData(id_gymkana_instance:number, id_group:number){
-    const path = `${this.api}/getparticipantbydata/${id_gymkana_instance}/${id_group}`;
+    // const path = `${this.api}/getparticipantbydata/${id_gymkana_instance}/${id_group}`;
+    const path = `/getparticipantbydata/${id_gymkana_instance}/${id_group}`;
     return this.http.get<any>(path);
   }
 
   getAllUserGroup(){
-    const path = `${this.api}/getallusergroup/`;
+    // const path = `${this.api}/getallusergroup/`;
+    const path = `/getallusergroup/`;
     return this.http.get<any>(path);
     
   }
   getDescriptionById(id:number){
-    const path = `${this.api}/getdescriptionbyid/${id}`;
+    // const path = `${this.api}/getdescriptionbyid/${id}`;
+    const path = `/getdescriptionbyid/${id}`;
     return this.http.get<any>(path);
   }
 }

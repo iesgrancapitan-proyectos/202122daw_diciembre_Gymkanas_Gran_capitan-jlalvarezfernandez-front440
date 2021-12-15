@@ -23,20 +23,24 @@ export class DataService {
   ) { }
 
   getAllActivesGymkanas() {
-    const path = `${this.api}/gymkanas_instances_future`;
+    const path = `/gymkanas_instances_future`;
+    // const path = `${this.api}/gymkanas_instances_future`;
     return this.http.get<any>(path);
   }
 
   getAllFutureGymkanas() {
-    const path = `${this.api}/gymkanas_instances_active`;
+    const path = `/gymkanas_instances_active`;
+    // const path = `${this.api}/gymkanas_instances_active`;
     return this.http.get<any>(path);
   }
   getTests(id: string) {
-    const path = `${this.api}/tests/${id}`;
+    const path = `/tests/${id}`;
+    // const path = `${this.api}/tests/${id}`;
     return this.http.get<any>(path);
   }
   getSingleTest(id: string) {
-    const path = `${this.api}/test/${id}`;
+    const path = `/test/${id}`;
+    // const path = `${this.api}/test/${id}`;
     return this.http.get<any>(path);
   }
 
@@ -58,7 +62,8 @@ export class DataService {
     let start_date: any = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
-    this.http.post<any>(`${this.api}/group_test/`, {
+    // this.http.post<any>(`${this.api}/group_test/`, {
+    this.http.post<any>(`/group_test/`, {
       'id_group': idGroup,
       'id_test': id_test,
       'id_gymkana': id_gymkana,
@@ -74,7 +79,8 @@ export class DataService {
     let date = new Date();
     let dateNow = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
       + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    this.http.post<any>(`${this.api}/inscription/`, {
+    // this.http.post<any>(`${this.api}/inscription/`, {
+    this.http.post<any>(`/inscription/`, {
       'id_gymkana_instance': id_gymkana,
       'id_participant': id_participant,
       'date': dateNow,
@@ -85,27 +91,32 @@ export class DataService {
   }
 
   getTestByIdGymkana(id_gymkana: number) {
-    const path = `${this.api}/gettests/${id_gymkana}`;
+    // const path = `${this.api}/gettests/${id_gymkana}`;
+    const path = `/gettests/${id_gymkana}`;
     return this.http.get<any>(path);
   }
   getResponsesByIdTest(id_group: number, id_gymkana: number) {
-    const path = `${this.api}/getresponses/${id_group}/${id_gymkana}`;
+    // const path = `${this.api}/getresponses/${id_group}/${id_gymkana}`;
+    const path = `/getresponses/${id_group}/${id_gymkana}`;
     return this.http.get<any>(path);
   }
 
   getNameGymkanaById(id: number) {
-    const path = `${this.api}/getnamegymkanabyid/${id}`;
+    // const path = `${this.api}/getnamegymkanabyid/${id}`;
+    const path = `/getnamegymkanabyid/${id}`;
     return this.http.get<any>(path);
   }
 
   getGymkanaByIdInstancia(id: number) {
-    const path = `${this.api}/getgymkanabyidinstancia/${id}`;
+    // const path = `${this.api}/getgymkanabyidinstancia/${id}`;
+    const path = `/getgymkanabyidinstancia/${id}`;
     return this.http.get<any>(path);
   }
 
   createParticipant(id_gymkana: number, id_group: number) {
 
-    this.http.post<any>(`${this.api}/createparticipant/`, {
+    // this.http.post<any>(`${this.api}/createparticipant/`, {
+    this.http.post<any>(`/createparticipant/`, {
       'id_gymkana_instance': id_gymkana,
       'id_group': id_group,
 
@@ -114,22 +125,25 @@ export class DataService {
   }
 
   getShowParticipant(id_gymkana_instance: number, id_group: number) {
-    const path = `${this.api}/getshowparticipant/${id_gymkana_instance}/${id_group}`;
+    // const path = `${this.api}/getshowparticipant/${id_gymkana_instance}/${id_group}`;
+    const path = `/getshowparticipant/${id_gymkana_instance}/${id_group}`;
     return this.http.get<any>(path);
 
   }
 
 
   showParticipant(id_gymkana_instance: number, id_group: number) {
-    this.http.post<any>(`${this.api}/setparticipant/`, {
+    // this.http.post<any>(`${this.api}/setparticipant/`, {
+    this.http.post<any>(`/setparticipant/`, {
       'id_gymkana_instance': id_gymkana_instance,
       'id_group': id_group,
     })
   }
 
   getCurrentScore() {
-    const path = `${this.api}/getcurrentscore`;
+    // const path = `${this.api}/getcurrentscore`;
+    const path = `/getcurrentscore`;
     return this.http.get<any>(path);
   }
-   
+
 }
