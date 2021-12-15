@@ -12,7 +12,7 @@ export class DataService {
 
   // private api = 'http://127.0.0.1:8000/api';
   // private api = 'http://frontyincanas.iesgrancapitan.org/api';
-  private api = 'http://cpd.iesgrancapitan.org:9117';
+  private api = 'http://cpd.iesgrancapitan.org:9117/api';
 
 
   constructor(
