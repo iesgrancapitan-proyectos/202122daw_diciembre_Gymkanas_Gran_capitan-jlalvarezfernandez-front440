@@ -11,8 +11,7 @@
             <p><a href="/admin/groups">Grupos</a></p>
             <p><a href="/admin/users-groups">Usuarios grupos</a></p>
             <p><a href="/admin/participants">Participantes</a></p>
-            <p><a href="/admin/inscriptions">Inscripciones</a></p>
-            
+            <p><a href="/admin/inscriptions">Inscripciones</a></p>  
         </div>
         <div class="col-md-10">
             <div class="card">
