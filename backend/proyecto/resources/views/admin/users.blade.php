@@ -13,8 +13,8 @@
             <th>Estado</th>
             <th>Organizador</th>
             <th>Editar</th>
+            <th>Eliminar</th>
             
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -38,13 +38,13 @@
             </td>
             <td><button class="btn btn-warning btn-sm"><a href="/admin/users/edit-view/{{$user->id}}">Editar</a></button></td>
             {{-- Descomentar si se requiere que la app tenga la opción de eliminar usuarios --}}
-            {{-- <td>
+            <td>
                 <form action="users/destroy/{{$user->id}}" method="POST">
                     @method('POST')
                     @csrf
                     <input type="submit" value="Eliminar" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar?...')">
                 </form>
-            </td> --}}
+            </td>
         </tr>
         @endforeach
     </tbody>
