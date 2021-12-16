@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User_Groups;
+use App\Models\User_groups;
 use App\Models\User;
 use App\Models\Groups;
 use App\Models\Gymkana_instance;
