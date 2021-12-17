@@ -1,6 +1,6 @@
 {
-    "/api/": {
-        "target": "http://localhost/api",
+    "api/*": {
+        "target": "http://cpd.iesgracapitan.org:9117/api",  
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
